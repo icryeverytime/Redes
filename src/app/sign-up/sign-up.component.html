@@ -1,1 +1,55 @@
-<p>sign-up works!</p>
+<div id="background">
+
+  <form [formGroup]="profileForm" #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value,userPost)">
+    <h3>Sign Up</h3>
+    <label for="fname">First Name:</label>
+    <div *ngIf="fname?.errors?.required && fname?.touched" class="alert">
+        <div>* First Name is required</div>
+    </div>
+    <input type="text" id="fname" placeholder="First name" formControlName="fname" ngModel>
+    <label for="lname">Last Name:</label>
+    <div *ngIf="lname?.errors?.required && lname?.touched" class="alert">
+        <div>* Last Name is required</div>
+    </div>
+    <input type="text" id="lname" placeholder="Last name" formControlName="lname" ngModel>
+    <label for="user">User:</label>
+    <div *ngIf="user?.invalid && user?.touched" class="alert">
+        <div *ngIf="user?.errors?.required">
+            * User is required
+        </div>
+        <div *ngIf="user?.errors?.incorrect">
+            * User already exists
+        </div>
+    </div>
+    <input type="text" id="user" placeholder="User" formControlName="user" ngModel>
+    <label for="email">Email:</label>
+    <div *ngIf="email?.invalid && email?.touched" class="alert">
+        <div *ngIf="email?.errors?.required">
+            * Email is required
+        </div>
+        <div *ngIf="email?.errors?.email">
+            * Enter a valid email
+        </div>
+        <div *ngIf="email?.errors?.incorrect">
+            * Email already exists
+        </div>
+    </div>
+    <input type="email" id="email" placeholder="Email" formControlName="email" ngModel>
+    <label for="password">Password:</label>
+    <div *ngIf="password?.invalid && password?.touched" class="alert">
+        <div *ngIf="password?.errors?.required">
+            * Password is required
+        </div>
+        <div *ngIf="password?.errors?.minlength">
+            *  Password must be 8 characters long
+        </div>
+    </div>
+    <input type="password" id="password" placeholder="Password" formControlName="password" ngModel>
+    <label for="confirmar">Confirm Password:</label>
+    <div *ngIf="spassword?.errors?.passwordcompare && spassword?.touched" class="alert">
+        <div>* Passwords don't matchup</div>
+    </div>
+    <input type="password" id="spassword" placeholder="Confirm Password" formControlName="spassword" ngModel>
+    <br><input type="submit" value="Register" [disabled]="profileForm.invalid">
+</form>  
+</div>

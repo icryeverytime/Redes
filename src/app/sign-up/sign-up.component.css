@@ -1,0 +1,45 @@
+form{
+    text-align: center;
+    margin-left: 550px;
+    margin-right: 550px;
+    margin-top: 50px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 2px 4px #E6E6E3;
+}
+label{
+    display: block;
+    margin-bottom: 5px;
+}
+input{
+    text-align: center;
+    margin-bottom: 10px;
+    width: 300px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+}
+.alert{
+    color: red;
+    font-size: 14px;
+}
+input.ng-touched.ng-invalid{
+    border: 2px solid red;
+}
+input:hover{
+    transition: 2s;
+    border:2px solid #4DC3FF;
+}
+body{
+    margin-top: 0px;
+    padding: 0px;
+}
+input[type=submit]
+{
+    color: white;
+    background-color: #2662FF;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
