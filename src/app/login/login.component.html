@@ -1,1 +1,30 @@
-<p>login works!</p>
+<div>
+    <form [formGroup]="loginForm" #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value,userPost)">
+        <h3>Login</h3>
+        <label for="usuario">Username or email:</label>
+        <div *ngIf="usuario?.invalid && usuario?.touched" class="alert">
+            <div *ngIf="usuario?.errors?.required">
+                * Username or email is required
+            </div>
+            <div *ngIf="usuario?.errors?.verification">
+                *  Email attached to account is not verified
+            </div>
+            <div *ngIf="usuario?.errors?.math">
+                *  Credentials introduced don't match with an account
+            </div>
+
+        </div>
+        <input type="text" id="usuario" placeholder="Username or email" formControlName="usuario" ngModel>
+        <label for="password">Password:</label>
+        <div *ngIf="password?.invalid && password?.touched" class="alert">
+            <div *ngIf="password?.errors?.required">
+                * Password is required
+            </div>
+            <div *ngIf="password?.errors?.minlength">
+                *  Password must be 8 characters long
+            </div>
+        </div>
+        <input type="password" id="password" placeholder="Password" formControlName="password" ngModel>
+        <input type="submit" value="Login"  [disabled]="loginForm.invalid">
+    </form>
+</div>

@@ -10,8 +10,11 @@
   <ul>
     <li><a routerLink="/home" class="active">Home</a></li>
     <li><a class="active">Home</a></li>
-    <li style="float: right;" routerLink="/login"><a>Login</a></li>
-    <li style="float: right;" routerLink="/signup"><a>Sign Up</a></li>
+    <li style="float: right;" *ngIf="readLocalStorageValue()" routerLink="/login"><a>Login</a></li>
+    <li style="float: right;" *ngIf="readLocalStorageValue()" routerLink="/signup"><a>Sign Up</a></li>
+    <li style="float: right;" *ngIf="!readLocalStorageValue()" class="logout"><a (click)="logout()">Logout</a></li>
+    <li style="float: right;" *ngIf="!readLocalStorageValue()"><a >{{User}}</a></li>
+
   </ul>
 </nav>
 <router-outlet></router-outlet>

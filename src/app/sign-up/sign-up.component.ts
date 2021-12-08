@@ -3,6 +3,7 @@ import {FormGroup,FormControl, Validators, AbstractControl,ValidationErrors} fro
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import {trigger,state,style,animate,transition} from '@angular/animations'
 function validatePass(control:AbstractControl):ValidationErrors | null{
   if(control)
   {
@@ -19,7 +20,14 @@ function validatePass(control:AbstractControl):ValidationErrors | null{
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  styleUrls: ['./sign-up.component.css'],
+  animations:[
+    trigger('fade',[
+      state('in', style({ opacity: 1 })),
+      transition(':enter', [ style({ opacity: 0 }), animate(600) ]),
+      transition(':leave', animate(600, style({ opacity: 0 })))
+    ])
+  ]
 })
 export class SignUpComponent implements OnInit {
 

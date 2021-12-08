@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'redes';
+  User=localStorage.getItem('user')
+  readLocalStorageValue()
+  {
+    if(localStorage.getItem('user')==null)
+    {
+      return true
+    }
+    else{
+      return false
+    }
+  }
+  logout()
+  {
+    localStorage.removeItem('user')
+  }
 }

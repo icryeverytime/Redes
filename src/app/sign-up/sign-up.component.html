@@ -1,6 +1,6 @@
 <div id="background">
 
-  <form [formGroup]="profileForm" #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value,userPost)">
+  <form [formGroup]="profileForm" #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value,userPost)" [@fade]="'in'">
     <h3>Sign Up</h3>
     <label for="fname">First Name:</label>
     <div *ngIf="fname?.errors?.required && fname?.touched" class="alert">
