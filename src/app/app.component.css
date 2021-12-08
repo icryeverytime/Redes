@@ -22,3 +22,6 @@ li a{
 li a:hover{
     color: gray;
 }
+.logout{
+    background-color: red;
+}
