@@ -3,8 +3,25 @@ const port=3000
 const express=require('express')
 const app=express()
 const cors=require('cors')
+const https=require('https')
+const crypto = require("crypto");
 var mysql=require('mysql')
+var url=require('url')
+var request = require('request'); // "Request" library
 var nodemailer=require('nodemailer');
+var LastfmAPI = require('lastfmapi');
+
+var client_id='ad9782deb2b24f2892eb347a05140d01'
+var client_secret='42579b48778c4a80b71b66332960e2e0'
+var redirect_uri='http://25.83.103.75:5000/callback'
+var querystring = require('querystring');
+var redirect_uri2='http://localhost/4200/user'
+
+var lfm = new LastfmAPI({
+	'api_key' : '604024e30367d14d43eda34672a72cf2',
+	'secret' : '3cb61d7d9b472fa5b4213ba76a11c338'
+});
+
 const clientId='965546171874-7e227ia6k5begapiu3mhe6bnu57eu7cq.apps.googleusercontent.com';
 const clientsecret='ApCBEdpK8Wp8Uh0am4biRWqS';
 const redirecturl='https://developers.google.com/oauthplayground';
@@ -35,6 +52,44 @@ app.use(function (req, res, next) {
     res.header("Content-Security-Policy", "script-src 'self' https://apis.google.com");
     next();
 });
+
+app.get('/:email/callback',function(req,res){
+  var email=req.params.email
+  console.log(email)
+  var token=url.parse(req.url,true).query.token
+  console.log(token)
+  lfm.authenticate(token,function(err,session){
+    console.log(session.username)
+    console.log(session.key)
+
+    let sql='UPDATE User SET ? WHERE user = ?'
+    var con=mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "123456789",
+      database: "Redes"
+    });
+    con.connect(function(err){
+      if(err)
+      {
+        console.log(err)
+      }
+      else{
+        con.query(sql,[{usuariofm:session.username,secret:session.key},email],function(err,result,fields){
+          if(err)
+          {
+            console.log(err)
+          }
+          else{
+            console.log(result)
+            res.redirect('http://localhost:4200/user/'+email)
+            res.end
+          }
+        })
+      }
+    })
+  })  
+})
 app.get('/verify/:email/:hash',function(req,res){
     var data={
         "email":{
@@ -65,7 +120,7 @@ app.get('/verify/:email/:hash',function(req,res){
     console.log(data)
 })
 app.post('/login',(req,res)=>{
-    let sql='SELECT * FROM User WHERE (user =? OR email=?) AND password=? AND activo=?'
+    let sql='SELECT user,usuariofm FROM User WHERE (user =? OR email=?) AND password=? AND activo=?'
     let sql2='SELECT * FROM User WHERE user=? or email=?'
     let sql3='SELECT * FROM User WHERE (user=? or email=?) and activo=?'
     var a=0
@@ -99,7 +154,8 @@ app.post('/login',(req,res)=>{
                     }
                     if(result.length>0)
                     {
-                        res.send(req.body.usuario)
+                      res.send(result)
+                        //res.send(req.body.usuario)
                         res.end
                     }
                     else{

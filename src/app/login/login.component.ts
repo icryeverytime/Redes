@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
   
+  
   url='http://25.83.103.75:5000/login'
   constructor(private router: Router,private http: HttpClient) { }
   loginForm=new FormGroup({
@@ -24,7 +25,10 @@ export class LoginComponent implements OnInit {
   {
     console.log(data)
     this.http.post(this.url,data,{responseType: 'text'}).subscribe((result)=>{
+      var json=JSON.parse(result)
       console.log("Result: "+result)
+      console.log("User: "+json[0].user)
+      console.log("UserFm: "+json[0].usuariofm)
       if(result=="No esta verificado el correo"){
         formData.form.controls['usaurio'].setErrors({'verification':true})
       }
@@ -33,7 +37,9 @@ export class LoginComponent implements OnInit {
         formData.form.controls['usaurio'].setErrors({'match':true})
       }
       else{
-        localStorage.setItem('user',result)
+        
+        localStorage.setItem('user',json[0].user)
+        localStorage.setItem('usuariofm',json[0].usuariofm)
         window.location.href = "http://localhost:4200/home";
       }
     })
