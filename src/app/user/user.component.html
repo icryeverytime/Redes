@@ -1,361 +1,380 @@
 <h3>{{User}}</h3>
-<h4>Articles written by:</h4>
 <div id="playlists">
+    <h4>Articles written by:</h4>
     <div id="spotify">
-        <img *ngIf="!same()" src="assets/img/spotify.png" width="100px">
-        <br>
-        <button  (click)="click()">Connect</button>
+        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="!same2()"/>
+        <button *ngIf="!same2()" (click)="click()">Connect</button>
     </div>
 </div>
 <div id="playlists">
     <h4>Top Albums:</h4>
     <div id="spotify">
-        <img *ngIf="!same()" src="assets/img/spotify.png" width="100px">
-        <div id="border">
+        <p *ngIf="same3()"> User has not connected their last.fm account :(</p>
+        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="!same2()"/>
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data6["topalbums"]["album"]["0"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data6["topalbums"]["album"]["0"]["playcount"]}}</p>
             <p>Album name: {{data6["topalbums"]["album"]["0"]["name"]}}</p>
             <p>Artist name: {{data6["topalbums"]["album"]["0"]["artist"]["name"]}}</p>
             <img src={{album1}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data6["topalbums"]["album"]["1"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data6["topalbums"]["album"]["1"]["playcount"]}}</p>
             <p>Album name: {{data6["topalbums"]["album"]["1"]["name"]}}</p>
             <p>Artist name: {{data6["topalbums"]["album"]["1"]["artist"]["name"]}}</p>
             <img src={{album2}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data6["topalbums"]["album"]["2"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data6["topalbums"]["album"]["2"]["playcount"]}}</p>
             <p>Album name: {{data6["topalbums"]["album"]["2"]["name"]}}</p>
             <p>Artist name: {{data6["topalbums"]["album"]["2"]["artist"]["name"]}}</p>
             <img src={{album3}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data6["topalbums"]["album"]["3"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data6["topalbums"]["album"]["3"]["playcount"]}}</p>
             <p>Album name: {{data6["topalbums"]["album"]["3"]["name"]}}</p>
             <p>Artist name: {{data6["topalbums"]["album"]["3"]["artist"]["name"]}}</p>
             <img src={{album4}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data6["topalbums"]["album"]["4"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data6["topalbums"]["album"]["4"]["playcount"]}}</p>
             <p>Album name: {{data6["topalbums"]["album"]["4"]["name"]}}</p>
             <p>Artist name: {{data6["topalbums"]["album"]["4"]["artist"]["name"]}}</p>
             <img src={{album5}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data6["topalbums"]["album"]["5"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data6["topalbums"]["album"]["5"]["playcount"]}}</p>
             <p>Album name: {{data6["topalbums"]["album"]["5"]["name"]}}</p>
             <p>Artist name: {{data6["topalbums"]["album"]["5"]["artist"]["name"]}}</p>
             <img src={{album6}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data6["topalbums"]["album"]["6"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data6["topalbums"]["album"]["6"]["playcount"]}}</p>
             <p>Album name: {{data6["topalbums"]["album"]["6"]["name"]}}</p>
             <p>Artist name: {{data6["topalbums"]["album"]["6"]["artist"]["name"]}}</p>
             <img src={{album7}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data6["topalbums"]["album"]["7"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data6["topalbums"]["album"]["7"]["playcount"]}}</p>
             <p>Album name: {{data6["topalbums"]["album"]["7"]["name"]}}</p>
             <p>Artist name: {{data6["topalbums"]["album"]["7"]["artist"]["name"]}}</p>
             <img src={{album8}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data6["topalbums"]["album"]["8"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data6["topalbums"]["album"]["8"]["playcount"]}}</p>
             <p>Album name: {{data6["topalbums"]["album"]["8"]["name"]}}</p>
             <p>Artist name: {{data6["topalbums"]["album"]["8"]["artist"]["name"]}}</p>
             <img src={{album9}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data6["topalbums"]["album"]["9"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data6["topalbums"]["album"]["9"]["playcount"]}}</p>
             <p>Album name: {{data6["topalbums"]["album"]["9"]["name"]}}</p>
             <p>Artist name: {{data6["topalbums"]["album"]["9"]["artist"]["name"]}}</p>
             <img src={{album10}}>
         </div>
-        <button  (click)="click()">Connect</button>
+        <button *ngIf="!same2()" (click)="click()">Connect</button>
     </div>
 </div>
 <div id="playlists">
     <h4>Recent tracks:</h4>
     <div id="spotify">
-        <img *ngIf="!same()" src="assets/img/spotify.png" width="100px">
-        <div id="border">
+        <p *ngIf="same3()"> User has not connected his last.fm account :(</p>
+        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="!same2()"/>
+        <div id="border " *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["0"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["0"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["0"]["artist"]["#text"]}}</p>
             <img src={{song1}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["1"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["1"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["1"]["artist"]["#text"]}}</p>
             <img src={{song2}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["2"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["2"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["2"]["artist"]["#text"]}}</p>
             <img src={{song3}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["3"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["3"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["3"]["artist"]["#text"]}}</p>
             <img src={{song4}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["4"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["4"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["4"]["artist"]["#text"]}}</p>
             <img src={{song5}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["5"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["5"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["5"]["artist"]["#text"]}}</p>
             <img src={{song6}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["6"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["6"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["6"]["artist"]["#text"]}}</p>
             <img src={{song7}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["7"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["7"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["7"]["artist"]["#text"]}}</p>
             <img src={{song8}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["8"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["8"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["8"]["artist"]["#text"]}}</p>
             <img src={{song9}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["9"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["9"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["9"]["artist"]["#text"]}}</p>
             <img src={{song10}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["10"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["10"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["10"]["artist"]["#text"]}}</p>
             <img src={{song11}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["11"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["11"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["11"]["artist"]["#text"]}}</p>
             <img src={{song12}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["12"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["12"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["12"]["artist"]["#text"]}}</p>
             <img src={{song13}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["13"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["13"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["13"]["artist"]["#text"]}}</p>
             <img src={{song14}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["14"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["14"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["14"]["artist"]["#text"]}}</p>
             <img src={{song15}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["15"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["15"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["15"]["artist"]["#text"]}}</p>
             <img src={{song16}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["16"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["16"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["16"]["artist"]["#text"]}}</p>
             <img src={{song17}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["17"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["17"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["17"]["artist"]["#text"]}}</p>
             <img src={{song18}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["18"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["18"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["18"]["artist"]["#text"]}}</p>
             <img src={{song19}}>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["19"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["19"]["album"]["#text"]}}</p>
             <p>Artist: {{data7["recenttracks"]["track"]["19"]["artist"]["#text"]}}</p>
             <img src={{song20}}>
         </div>
-        <button *ngIf="!same()" (click)="click()">Connect</button>
+        <button *ngIf="!same2()" (click)="click()">Connect</button>
     </div>
 </div>
-<h4>Weekly Album Chart:</h4>
 <div id="playlists">
+    <h4>Weekly Album Chart:</h4>
     <div id="spotify">
-        <img *ngIf="!same()" src="assets/img/spotify.png" width="100px">
-        <div id="border">
+        <p *ngIf="same3()"> User has not connected his last.fm account :(</p>
+        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="!same2()"/>
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data["weeklyalbumchart"]["album"]["0"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data["weeklyalbumchart"]["album"]["0"]["playcount"]}}</p>
             <p>Album name: {{data["weeklyalbumchart"]["album"]["0"]["name"]}}</p>
             <p>Artist: {{data["weeklyalbumchart"]["album"]["0"]["artist"]["#text"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data["weeklyalbumchart"]["album"]["1"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data["weeklyalbumchart"]["album"]["1"]["playcount"]}}</p>
             <p>Album name: {{data["weeklyalbumchart"]["album"]["1"]["name"]}}</p>
             <p>Artist: {{data["weeklyalbumchart"]["album"]["1"]["artist"]["#text"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data["weeklyalbumchart"]["album"]["2"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data["weeklyalbumchart"]["album"]["2"]["playcount"]}}</p>
             <p>Album name: {{data["weeklyalbumchart"]["album"]["2"]["name"]}}</p>
             <p>Artist: {{data["weeklyalbumchart"]["album"]["2"]["artist"]["#text"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data["weeklyalbumchart"]["album"]["3"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data["weeklyalbumchart"]["album"]["3"]["playcount"]}}</p>
             <p>Album name: {{data["weeklyalbumchart"]["album"]["3"]["name"]}}</p>
             <p>Artist: {{data["weeklyalbumchart"]["album"]["3"]["artist"]["#text"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data["weeklyalbumchart"]["album"]["4"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data["weeklyalbumchart"]["album"]["4"]["playcount"]}}</p>
             <p>Album name: {{data["weeklyalbumchart"]["album"]["4"]["name"]}}</p>
             <p>Artist: {{data["weeklyalbumchart"]["album"]["4"]["artist"]["#text"]}}</p>
         </div>
-        <button *ngIf="!same()" (click)="click()">Connect</button>
+        <button *ngIf="!same2()" (click)="click()">Connect</button>
     </div>
 </div>
 <div id="playlists">
     <h4>Weekly Artist Chart:</h4>
     <div id="spotify">
-        <img *ngIf="!same()" src="assets/img/spotify.png" width="100px">
-        <div id="border">
+        <p *ngIf="same3()"> User has not connected his last.fm account :(</p>
+        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="!same2()"/>
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data2["weeklyartistchart"]["artist"]["0"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data2["weeklyartistchart"]["artist"]["0"]["playcount"]}}</p>
             <p>Artist: {{data2["weeklyartistchart"]["artist"]["0"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data2["weeklyartistchart"]["artist"]["1"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data2["weeklyartistchart"]["artist"]["1"]["playcount"]}}</p>
             <p>Artist: {{data2["weeklyartistchart"]["artist"]["1"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data2["weeklyartistchart"]["artist"]["2"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data2["weeklyartistchart"]["artist"]["2"]["playcount"]}}</p>
             <p>Artist: {{data2["weeklyartistchart"]["artist"]["2"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data2["weeklyartistchart"]["artist"]["3"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data2["weeklyartistchart"]["artist"]["3"]["playcount"]}}</p>
             <p>Artist: {{data2["weeklyartistchart"]["artist"]["3"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data2["weeklyartistchart"]["artist"]["4"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data2["weeklyartistchart"]["artist"]["4"]["playcount"]}}</p>
             <p>Artist: {{data2["weeklyartistchart"]["artist"]["4"]["name"]}}</p>
         </div>
-        <button *ngIf="!same()" (click)="click()">Connect</button>
+        <button *ngIf="!same2()" (click)="click()">Connect</button>
     </div>
 </div>
 <div id="playlists">
     <h4>Weekly Tracks Chart:</h4>
     <div id="spotify">
-        <img *ngIf="!same()" src="assets/img/spotify.png" width="100px">
-        <div id="border">
+        <p *ngIf="same3()"> User has not connected his last.fm account :(</p>
+        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="!same2()"/>
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data3["weeklytrackchart"]["track"]["0"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data3["weeklytrackchart"]["track"]["0"]["playcount"]}}</p>
             <p>Artist: {{data3["weeklytrackchart"]["track"]["0"]["artist"]["#text"]}}</p>
             <p>Song name: {{data3["weeklytrackchart"]["track"]["0"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data3["weeklytrackchart"]["track"]["1"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data3["weeklytrackchart"]["track"]["1"]["playcount"]}}</p>
             <p>Artist: {{data3["weeklytrackchart"]["track"]["1"]["artist"]["#text"]}}</p>
             <p>Song name: {{data3["weeklytrackchart"]["track"]["1"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data3["weeklytrackchart"]["track"]["2"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data3["weeklytrackchart"]["track"]["2"]["playcount"]}}</p>
             <p>Artist: {{data3["weeklytrackchart"]["track"]["2"]["artist"]["#text"]}}</p>
             <p>Song name: {{data3["weeklytrackchart"]["track"]["2"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data3["weeklytrackchart"]["track"]["3"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data3["weeklytrackchart"]["track"]["3"]["playcount"]}}</p>
             <p>Artist: {{data3["weeklytrackchart"]["track"]["3"]["artist"]["#text"]}}</p>
             <p>Song name: {{data3["weeklytrackchart"]["track"]["3"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data3["weeklytrackchart"]["track"]["4"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data3["weeklytrackchart"]["track"]["4"]["playcount"]}}</p>
             <p>Artist: {{data3["weeklytrackchart"]["track"]["4"]["artist"]["#text"]}}</p>
             <p>Song name: {{data3["weeklytrackchart"]["track"]["4"]["name"]}}</p>
         </div>
-        <button *ngIf="!same()" (click)="click()">Connect</button>
+        <button *ngIf="!same2()" (click)="click()">Connect</button>
     </div>
 </div>
 <div id="playlists">
     <h4>Top tracks:</h4>
     <div id="spotify">
-        <img  *ngIf="!same()" src="assets/img/spotify.png" width="100px">
-        <div id="border">
+        <p *ngIf="same3()"> User has not connected his last.fm account :(</p>
+        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="!same2()"/>
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data4["toptracks"]["track"]["0"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data4["toptracks"]["track"]["0"]["playcount"]}}</p>
             <p>Artist: {{data4["toptracks"]["track"]["0"]["artist"]["name"]}}</p>
             <p>Song name: {{data4["toptracks"]["track"]["0"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data4["toptracks"]["track"]["1"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data4["toptracks"]["track"]["1"]["playcount"]}}</p>
             <p>Artist: {{data4["toptracks"]["track"]["1"]["artist"]["name"]}}</p>
             <p>Song name: {{data4["toptracks"]["track"]["1"]["name"]}}</p>
             
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data4["toptracks"]["track"]["2"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data4["toptracks"]["track"]["2"]["playcount"]}}</p>
             <p>Artist: {{data4["toptracks"]["track"]["2"]["artist"]["name"]}}</p>
             <p>Song name: {{data4["toptracks"]["track"]["2"]["name"]}}</p>
             
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data4["toptracks"]["track"]["3"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data4["toptracks"]["track"]["3"]["playcount"]}}</p>
             <p>Artist: {{data4["toptracks"]["track"]["3"]["artist"]["name"]}}</p>
             <p>Song name: {{data4["toptracks"]["track"]["3"]["name"]}}</p>
             
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data4["toptracks"]["track"]["4"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data4["toptracks"]["track"]["4"]["playcount"]}}</p>
             <p>Artist: {{data4["toptracks"]["track"]["4"]["artist"]["name"]}}</p>
             <p>Song name: {{data4["toptracks"]["track"]["4"]["name"]}}</p>
             
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data4["toptracks"]["track"]["5"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data4["toptracks"]["track"]["5"]["playcount"]}}</p>
             <p>Artist: {{data4["toptracks"]["track"]["5"]["artist"]["name"]}}</p>
@@ -363,138 +382,144 @@
             
         </div>
 
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data4["toptracks"]["track"]["6"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data4["toptracks"]["track"]["6"]["playcount"]}}</p>
             <p>Artist: {{data4["toptracks"]["track"]["6"]["artist"]["name"]}}</p>
             <p>Song name: {{data4["toptracks"]["track"]["6"]["name"]}}</p>
             
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data4["toptracks"]["track"]["7"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data4["toptracks"]["track"]["7"]["playcount"]}}</p>
             <p>Artist: {{data4["toptracks"]["track"]["7"]["artist"]["name"]}}</p>
             <p>Song name: {{data4["toptracks"]["track"]["7"]["name"]}}</p>
             
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data4["toptracks"]["track"]["8"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data4["toptracks"]["track"]["8"]["playcount"]}}</p>
             <p>Artist: {{data4["toptracks"]["track"]["8"]["artist"]["name"]}}</p>
             <p>Song name: {{data4["toptracks"]["track"]["8"]["name"]}}</p>
             
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data4["toptracks"]["track"]["9"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data4["toptracks"]["track"]["9"]["playcount"]}}</p>
             <p>Artist: {{data4["toptracks"]["track"]["9"]["artist"]["name"]}}</p>
             <p>Song name: {{data4["toptracks"]["track"]["9"]["name"]}}</p>
             
         </div>
-        <button *ngIf="!same()" (click)="click()">Connect</button>
+        <button *ngIf="!same2()" (click)="click()">Connect</button>
     </div>
 </div>
 <div id="playlists">
     <h4>Top artists:</h4>
     <div id="spotify">
-        <img *ngIf="!same()" src="assets/img/spotify.png" width="100px">
-        <div id="border">
+        <p *ngIf="same3()"> User has not connected his last.fm account :(</p>
+        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="!same2()"/>
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data5["topartists"]["artist"]["0"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data5["topartists"]["artist"]["0"]["playcount"]}}</p>
             <p>Artist: {{data5["topartists"]["artist"]["0"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data5["topartists"]["artist"]["1"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data5["topartists"]["artist"]["1"]["playcount"]}}</p>
             <p>Artist: {{data5["topartists"]["artist"]["1"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data5["topartists"]["artist"]["2"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data5["topartists"]["artist"]["2"]["playcount"]}}</p>
             <p>Artist: {{data5["topartists"]["artist"]["2"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data5["topartists"]["artist"]["3"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data5["topartists"]["artist"]["3"]["playcount"]}}</p>
             <p>Artist: {{data5["topartists"]["artist"]["3"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data5["topartists"]["artist"]["4"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data5["topartists"]["artist"]["4"]["playcount"]}}</p>
             <p>Artist: {{data5["topartists"]["artist"]["4"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data5["topartists"]["artist"]["5"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data5["topartists"]["artist"]["5"]["playcount"]}}</p>
             <p>Artist: {{data5["topartists"]["artist"]["5"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data5["topartists"]["artist"]["6"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data5["topartists"]["artist"]["6"]["playcount"]}}</p>
             <p>Artist: {{data5["topartists"]["artist"]["6"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data5["topartists"]["artist"]["7"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data5["topartists"]["artist"]["7"]["playcount"]}}</p>
             <p>Artist: {{data5["topartists"]["artist"]["7"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data5["topartists"]["artist"]["8"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data5["topartists"]["artist"]["8"]["playcount"]}}</p>
             <p>Artist: {{data5["topartists"]["artist"]["8"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Rank: {{data5["topartists"]["artist"]["9"]["@attr"]["rank"]}}</p>
             <p>Playcout: {{data5["topartists"]["artist"]["9"]["playcount"]}}</p>
             <p>Artist: {{data5["topartists"]["artist"]["9"]["name"]}}</p>
         </div>
-        <button *ngIf="!same()" (click)="click()">Connect</button>
+        <button *ngIf="!same2()" (click)="click()">Connect</button>
     </div>
 </div>
 <div id="playlists">
     <h4>Loved tracks:</h4>
     <div id="spotify">
-        <img  *ngIf="!same()" src="assets/img/spotify.png" width="100px">
-        <div id="border">
+        <p *ngIf="same3()"> User has not connected his last.fm account :(</p>
+        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="!same2()"/>
+        <div id="border" *ngIf="same()">
             <p>Track: {{data8["lovedtracks"]["track"]["0"]["name"]}}</p>
             <p>Artist: {{data8["lovedtracks"]["track"]["0"]["artist"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data8["lovedtracks"]["track"]["1"]["name"]}}</p>
             <p>Artist: {{data8["lovedtracks"]["track"]["1"]["artist"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data8["lovedtracks"]["track"]["2"]["name"]}}</p>
             <p>Artist: {{data8["lovedtracks"]["track"]["2"]["artist"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data8["lovedtracks"]["track"]["3"]["name"]}}</p>
             <p>Artist: {{data8["lovedtracks"]["track"]["3"]["artist"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data8["lovedtracks"]["track"]["4"]["name"]}}</p>
             <p>Artist: {{data8["lovedtracks"]["track"]["4"]["artist"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data8["lovedtracks"]["track"]["5"]["name"]}}</p>
             <p>Artist: {{data8["lovedtracks"]["track"]["5"]["artist"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data8["lovedtracks"]["track"]["6"]["name"]}}</p>
             <p>Artist: {{data8["lovedtracks"]["track"]["6"]["artist"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data8["lovedtracks"]["track"]["7"]["name"]}}</p>
             <p>Artist: {{data8["lovedtracks"]["track"]["7"]["artist"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data8["lovedtracks"]["track"]["8"]["name"]}}</p>
             <p>Artist: {{data8["lovedtracks"]["track"]["8"]["artist"]["name"]}}</p>
         </div>
-        <div id="border">
+        <div id="border" *ngIf="same()">
             <p>Track: {{data8["lovedtracks"]["track"]["9"]["name"]}}</p>
             <p>Artist: {{data8["lovedtracks"]["track"]["9"]["artist"]["name"]}}</p>
         </div>
-        <button *ngIf="!same()" (click)="click()">Connect</button>
+        <button *ngIf="!same2()" (click)="click()">Connect</button>
     </div>
 </div>

@@ -25,6 +25,7 @@ export class AppComponent {
   {
     localStorage.removeItem('user')
     localStorage.removeItem('usuariofm')
+    window.location.href = "http://localhost:4200/user/"
   }
   viewUser()
   {

@@ -5,6 +5,7 @@ const app=express()
 const cors=require('cors')
 const https=require('https')
 const crypto = require("crypto");
+
 var mysql=require('mysql')
 var url=require('url')
 var request = require('request'); // "Request" library
@@ -40,7 +41,6 @@ let transporter = nodemailer.createTransport({
       expires: 1484314697598
   }
 });
-
 app.use(cors())
 app.options('*',cors())
 app.use(express.json());
@@ -52,7 +52,6 @@ app.use(function (req, res, next) {
     res.header("Content-Security-Policy", "script-src 'self' https://apis.google.com");
     next();
 });
-
 app.get('/:email/callback',function(req,res){
   var email=req.params.email
   console.log(email)
@@ -61,7 +60,6 @@ app.get('/:email/callback',function(req,res){
   lfm.authenticate(token,function(err,session){
     console.log(session.username)
     console.log(session.key)
-
     let sql='UPDATE User SET ? WHERE user = ?'
     var con=mysql.createConnection({
       host: "localhost",
@@ -90,6 +88,29 @@ app.get('/:email/callback',function(req,res){
     })
   })  
 })
+app.get('/fm/:user',function(req,res){
+  var data=req.params.user
+  let sql='SELECT usuariofm FROM User WHERE user=?'
+  var con=mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "123456789",
+    database: "Redes"
+  });
+  con.connect(function(err){
+    if(err){
+        console.log(err)
+  }
+    con.query(sql,req.params.user,function(err,result,fields){
+      if(err)
+      {
+        console.log(err)
+      }
+      res.send(result)
+      res.end
+    })
+  })
+})
 app.get('/verify/:email/:hash',function(req,res){
     var data={
         "email":{
@@ -99,12 +120,12 @@ app.get('/verify/:email/:hash',function(req,res){
     }
     let sql=`UPDATE User SET ? WHERE email = ? and hash =?`
     var con=mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "123456789",
-        database: "Redes"
-      });
-      con.connect(function(err){
+      host: "localhost",
+      user: "root",
+      password: "123456789",
+      database: "Redes"
+    });  
+    con.connect(function(err){
         if(err){
             console.log(err)
           }
@@ -125,12 +146,12 @@ app.post('/login',(req,res)=>{
     let sql3='SELECT * FROM User WHERE (user=? or email=?) and activo=?'
     var a=0
     var con=mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "123456789",
-        database: "Redes"
-    });
-      con.connect(function(err){
+      host: "localhost",
+      user: "root",
+      password: "123456789",
+      database: "Redes"
+    });  
+    con.connect(function(err){
         if(err)
         {
             console.log(err)
@@ -145,7 +166,7 @@ app.post('/login',(req,res)=>{
                 a=1
                 res.send("No esta verificado el correo")
                 res.end
-                return
+      
             }
             else{
                 con.query(sql,[req.body.usuario,req.body.usuario,req.body.password,"yes"],function(err,result,fields){
@@ -167,6 +188,7 @@ app.post('/login',(req,res)=>{
         })
     })
 })
+
 app.post('/registro',(req,res)=>{
     let rand=Math.floor(Math.random()*100000000)
     let sql='INSERT INTO User SET ?'

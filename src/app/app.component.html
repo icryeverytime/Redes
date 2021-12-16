@@ -8,12 +8,11 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <nav>
   <ul>
-    <li><a routerLink="/home" class="active">Home</a></li>
-    <li><a class="active">Home</a></li>
-    <li style="float: right;" *ngIf="readLocalStorageValue()" routerLink="/signup"><a>Sign Up</a></li>
-    <li style="float: right;" *ngIf="readLocalStorageValue()" routerLink="/login"><a>Login</a></li>
+    <li><a routerLink="/home" routerLinkActive="active" >Home</a></li>
+    <li style="float: right;" *ngIf="readLocalStorageValue()" routerLink="/signup" routerLinkActive="active" ><a>Sign Up</a></li>
+    <li style="float: right;" *ngIf="readLocalStorageValue()" routerLink="/login" routerLinkActive="active"><a>Login</a></li>
     <li style="float: right;" *ngIf="!readLocalStorageValue()" class="logout"><a (click)="logout()">Logout</a></li>
-    <li style="float: right;" *ngIf="!readLocalStorageValue()"><a (click)="viewUser()">{{User}}</a></li>
+    <li style="float: right;" *ngIf="!readLocalStorageValue()" routerLinkActive="active"><a (click)="viewUser()">{{User}}</a></li>
   </ul>
 </nav>
 <router-outlet></router-outlet>
