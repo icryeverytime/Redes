@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
+import { SubidaPostsComponent } from './subida-posts/subida-posts.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { UserComponent } from './user/user.component';
     HomeComponent,
     SignUpComponent,
     LoginComponent,
-    UserComponent
+    UserComponent,
+    SubidaPostsComponent
   ],
   imports: [
     BrowserModule,
