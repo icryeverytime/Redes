@@ -22,6 +22,9 @@ li a{
 li a:hover{
     color: gray;
 }
+.active{
+background-color: lightblue;
+}
 .logout{
     background-color: red;
 }

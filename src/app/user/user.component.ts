@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserComponent implements OnInit {
 
   User:string|null=""
+  Userfm:any
   public data:any=[]
   public data2:any=[]
   public data3:any=[]
@@ -50,6 +51,8 @@ export class UserComponent implements OnInit {
   song19:any
   song20:any
 
+  respuesta:any
+
   #text:any='#text'
   constructor(private route:ActivatedRoute,private http: HttpClient) { 
     this.data=[]
@@ -60,16 +63,25 @@ export class UserComponent implements OnInit {
     this.data6=[]
     this.data7=[]
     this.data8=[]
-    if(localStorage.getItem('usuariofm')!=null)
-    {
-      const url='http://ws.audioscrobbler.com/2.0/?method=user.getweeklyalbumchart&user='+localStorage.getItem('usuariofm')+'&api_key=604024e30367d14d43eda34672a72cf2&format=json'
-      const url2='http://ws.audioscrobbler.com/2.0/?method=user.getweeklyartistchart&user='+localStorage.getItem('usuariofm')+'&api_key=604024e30367d14d43eda34672a72cf2&format=json'
-      const url3='http://ws.audioscrobbler.com/2.0/?method=user.getweeklytrackchart&user='+localStorage.getItem('usuariofm')+'&api_key=604024e30367d14d43eda34672a72cf2&format=json'
-      const url4='http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user='+localStorage.getItem('usuariofm')+'&api_key=604024e30367d14d43eda34672a72cf2&format=json'
-      const url5='http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user='+localStorage.getItem('usuariofm')+'&api_key=604024e30367d14d43eda34672a72cf2&format=json'
-      const url6='http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user='+localStorage.getItem('usuariofm')+'&api_key=604024e30367d14d43eda34672a72cf2&format=json'
-      const url7='http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user='+localStorage.getItem('usuariofm')+'&api_key=604024e30367d14d43eda34672a72cf2&format=json'
-      const url8='http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user='+localStorage.getItem('usuariofm')+'&api_key=604024e30367d14d43eda34672a72cf2&format=json'
+    this.User=this.route.snapshot.paramMap.get('user')
+    
+    const url9='http://25.83.103.75:5000/fm/'+this.User
+    this.http.get(url9).subscribe((res)=>{
+      console.log(res)
+      this.respuesta=res
+      this.Userfm=this.respuesta["0"]["usuariofm"]
+      console.log(this.Userfm)
+      if(this.Userfm!="null" && this.Userfm!=null)
+      {
+        console.log("entro")
+      const url='http://ws.audioscrobbler.com/2.0/?method=user.getweeklyalbumchart&user='+this.Userfm+'&api_key=604024e30367d14d43eda34672a72cf2&format=json'
+      const url2='http://ws.audioscrobbler.com/2.0/?method=user.getweeklyartistchart&user='+this.Userfm+'&api_key=604024e30367d14d43eda34672a72cf2&format=json'
+      const url3='http://ws.audioscrobbler.com/2.0/?method=user.getweeklytrackchart&user='+this.Userfm+'&api_key=604024e30367d14d43eda34672a72cf2&format=json'
+      const url4='http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user='+this.Userfm+'&api_key=604024e30367d14d43eda34672a72cf2&format=json'
+      const url5='http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user='+this.Userfm+'&api_key=604024e30367d14d43eda34672a72cf2&format=json'
+      const url6='http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user='+this.Userfm+'&api_key=604024e30367d14d43eda34672a72cf2&format=json'
+      const url7='http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user='+this.Userfm+'&api_key=604024e30367d14d43eda34672a72cf2&format=json'
+      const url8='http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user='+this.Userfm+'&api_key=604024e30367d14d43eda34672a72cf2&format=json'
       this.http.get(url).subscribe((res)=>{
         this.data=res
       })
@@ -87,6 +99,7 @@ export class UserComponent implements OnInit {
       })
       this.http.get(url6).subscribe((res)=>{
         this.data6=res
+        console.log(this.data6)
         this.album1=this.data6["topalbums"]["album"]["0"]["image"]["3"]["#text"]
         this.album2=this.data6["topalbums"]["album"]["1"]["image"]["3"]["#text"]
         this.album3=this.data6["topalbums"]["album"]["2"]["image"]["3"]["#text"]
@@ -125,12 +138,10 @@ export class UserComponent implements OnInit {
         this.data8=res
       })
     }
+    })
   }
-
-
-
   ngOnInit(): void {
-    this.User=this.route.snapshot.paramMap.get('user')
+
   }
   click()
   {
@@ -138,21 +149,24 @@ export class UserComponent implements OnInit {
   }
   same()
   {
-    if(localStorage.getItem('usuariofm')!=null)
-    {
-      return true
-    }
-    if(localStorage.getItem('user')==null)
-    {
-      return true
-    }
-    else
-    {
-      if(this.User==localStorage.getItem('user'))
+      if(this.Userfm!=null)
+      {
+        return true
+      }
+      return false
+  }
+  same2(){
+      if(localStorage.getItem('user')==this.User)
       {
         return false
       }
+      return true
+  }
+  same3(){
+    if(this.Userfm==null && localStorage.getItem('user')!=this.User)
+    {
+      return true
     }
-    return true
+    return false
   }
 }
