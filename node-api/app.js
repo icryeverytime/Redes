@@ -448,6 +448,7 @@ app.post('/getarticles',(req,res)=>{
         res.end
       }
       else{
+        console.log("REsultado despues de getarticles")
         console.log(result)
         res.send(result)
         res.end

@@ -24,7 +24,15 @@ export class PublishedarticleComponent implements OnInit {
         this.urlimg="http://25.83.103.75:5000/images/"+this.data[0].imagepath
     })
   }
-
+  logeado(){
+    if(localStorage.getItem('user')==null)
+    {
+      return false
+    }
+    else{
+      return true
+    }
+  }
   ngOnInit(): void {
   }
   viewUser(data:any)
