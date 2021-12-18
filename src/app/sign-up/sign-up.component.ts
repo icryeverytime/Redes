@@ -31,7 +31,7 @@ function validatePass(control:AbstractControl):ValidationErrors | null{
 })
 export class SignUpComponent implements OnInit {
 
-  url='http://25.83.103.75:5000/registro'
+  url='http://25.92.32.84:5000/registro'
   public data:any=[]
   public json:any=[]
 
