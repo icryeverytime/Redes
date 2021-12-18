@@ -1,0 +1,6 @@
+<div id="centrar"> 
+    <h1>{{this.data[0].title}}</h1>
+    <h5 (click)='viewUser(this.data[0]["email"])'>By: {{this.data[0].email}}</h5>
+    <img [attr.src]="this.urlimg" height="400px" width="400px">
+    <p>{{this.data[0].content}}</p>
+</div>

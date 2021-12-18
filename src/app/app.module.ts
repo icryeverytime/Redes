@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { SubidaPostsComponent } from './subida-posts/subida-posts.component';
+import { PublishedarticleComponent } from './publishedarticle/publishedarticle.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SubidaPostsComponent } from './subida-posts/subida-posts.component';
     SignUpComponent,
     LoginComponent,
     UserComponent,
-    SubidaPostsComponent
+    SubidaPostsComponent,
+    PublishedarticleComponent
   ],
   imports: [
     BrowserModule,

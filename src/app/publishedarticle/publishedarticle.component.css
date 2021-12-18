@@ -1,0 +1,17 @@
+#centrar{
+    text-align: center;
+    margin-top: 10px;
+}
+p{
+    text-align: justify;
+    margin-top: 50px;
+    margin-right: 150px;
+    margin-left: 150px;
+}
+h5{
+    font-weight: normal;
+}
+h5:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}

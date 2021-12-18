@@ -10,9 +10,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
   
-  
+  respuesta:any
   url='http://25.83.103.75:5000/login'
-  constructor(private router: Router,private http: HttpClient) { }
+  constructor(private router: Router,private http: HttpClient) { 
+    
+  }
   loginForm=new FormGroup({
     usuario: new FormControl('',[Validators.required]),
     password: new FormControl('',[Validators.required,Validators.minLength(8)])

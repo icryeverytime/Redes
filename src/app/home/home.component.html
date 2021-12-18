@@ -1,1 +1,87 @@
-<p>home works!</p>
+<h2>Newest Articles</h2>
+<div id="flex">
+    <div id="item" >
+        <p id="title" (click)='viewArticle(this.data[this.length-1]["id_articles"])'>{{this.data[this.length-1]["title"]}}</p>
+        <img [attr.src]="this.newurl3" width="200px" height="200px" (click)='viewArticle(this.data[this.length-1]["id_articles"])'>
+        <p id="writer" (click)='viewUser(this.data[this.length-1]["email"])'>By: {{this.data[this.length-1]["email"]}}</p>
+    </div>
+    <div id="item">
+        <p id="title" (click)='viewArticle(this.data[this.length-2]["id_articles"])'>{{this.data[this.length-2]["title"]}}</p>
+        <img [attr.src]="this.newurl2" width="200px" height="200px" (click)='viewArticle(this.data[this.length-2]["id_articles"])'>
+        <p id="writer" (click)='viewUser(this.data[this.length-2]["email"])'>By: {{this.data[this.length-2]["email"]}}</p>
+    </div>
+    <div id="item">
+        <p id="title" (click)='viewArticle(this.data[this.length-3]["id_articles"])'>{{this.data[this.length-3]["title"]}}</p>
+        <img [attr.src]="this.newurl1" width="200px" height="200px" (click)='viewArticle(this.data[this.length-3]["id_articles"])'>
+        <p id="writer"(click)='viewUser(this.data[this.length-3]["email"])'> By: {{this.data[this.length-3]["email"]}}</p>
+    </div>
+</div>
+<h2>Oldest articles</h2>
+<div id="flex">
+    <div id="item">
+        <p id="title" (click)='viewArticle(this.data[0]["id_articles"])'>{{this.data[0]["title"]}}</p>
+        <img [attr.src]="this.oldurl1" width="200px" height="200px" (click)='viewArticle(this.data[0]["id_articles"])'>
+        <p id="writer" (click)='viewUser(this.data[0]["email"])'>By: {{this.data[0]["email"]}}</p>
+    </div>
+    <div id="item">
+        <p id="title" (click)='viewArticle(this.data[1]["id_articles"])'>{{this.data[1]["title"]}}</p>
+        <img [attr.src]="this.oldurl2" width="200px" height="200px" (click)='viewArticle(this.data[1]["id_articles"])'>
+        <p id="writer" (click)='viewUser(this.data[1]["email"])'>By: {{this.data[1]["email"]}}</p>
+    </div>
+    <div id="item">
+        <p id="title" (click)='viewArticle(this.data[2]["id_articles"])'>{{this.data[2]["title"]}}</p>
+        <img [attr.src]="this.oldurl3" width="200px" height="200px" (click)='viewArticle(this.data[2]["id_articles"])'>
+        <p id="writer" (click)='viewUser(this.data[2]["email"])'>By: {{this.data[2]["email"]}}</p>
+    </div>
+</div>
+<h2>Random Articles</h2>
+<div id="flex">
+    <div id="item">
+        <p id="title" (click)='viewArticle(this.data[this.random1]["id_articles"])'>{{this.data[this.random1]["title"]}}</p>
+        <img [attr.src]="this.randomurl1" width="200px" height="200px" (click)='viewArticle(this.data[this.random1]["id_articles"])'>
+        <p id="writer" (click)='viewUser(this.data[this.random1]["email"])'>By: {{this.data[this.random1]["email"]}}</p>
+    </div>
+    <div id="item">
+        <p id="title" (click)='viewArticle(this.data[this.random2]["id_articles"])'>{{this.data[this.random2]["title"]}}</p>
+        <img [attr.src]="this.randomurl2" width="200px" height="200px" (click)='viewArticle(this.data[this.random2]["id_articles"])'>
+        <p id="writer" (click)='viewUser(this.data[this.random2]["email"])'>By: {{this.data[this.random2]["email"]}}</p>
+    </div>
+    <div id="item">
+        <p id="title" (click)='viewArticle(this.data[this.random3]["id_articles"])'>{{this.data[this.random3]["title"]}}</p>
+        <img [attr.src]="this.randomurl3" width="200px" height="200px" (click)='viewArticle(this.data[this.random3]["id_articles"])'>
+        <p id="writer" (click)='viewUser(this.data[this.random2]["email"])'>By: {{this.data[this.random3]["email"]}}</p>
+    </div>
+</div>
+<h2>Search by tags</h2>
+<div id="flex">
+    <div id="item2" class="gradient1">
+        <p id="tag">Pop</p>
+    </div>
+    <div id="item2" class="gradient2">
+        <p id="tag">Rock</p>
+    </div>
+    <div id="item2" class="gradient3">
+        <p id="tag">R&B</p>
+    </div>
+    <div id="item2" class="gradient4">
+        <p id="tag">Hiphop & Rap</p>
+    </div>
+    <div id="item2" class="gradient5">
+        <p id="tag">Country</p>
+    </div>
+    <div id="item2" class="gradient6">
+        <p id="tag">Soul</p>
+    </div>
+    <div id="item2" class="gradient7">
+        <p id="tag">Classical</p>
+    </div>
+    <div id="item2" class="gradient8">
+        <p id="tag">Regional</p>
+    </div>
+    <div id="item2" class="gradient9">
+        <p id="tag">Jazz</p>
+    </div>
+    <div id="item2" class="gradient10">
+        <p id="tag">Edm</p>
+    </div>
+</div>

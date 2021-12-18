@@ -397,6 +397,64 @@ app.get('/verify/:email/:hash',function(req,res){
       })
     console.log(data)
 })
+app.post('/getspecific',(req,res)=>{
+  let sql='SELECT * FROM Articles WHERE id_articles=?'
+  console.log(req.body.data.articleid)
+  var con=mysql.createConnection({
+    host:"localhost",
+    user: "root",
+    password: "123456789",
+    database: "Redes"
+  })
+  con.connect(function(err){
+    if(err)
+    {
+      console.log(err)
+    }
+    else{
+      con.query(sql,req.body.data.articleid,function(err,result,fields){
+        if(err)
+        {
+          console.log(err)
+        }
+        else{
+          res.send(result)
+          res.end
+        }
+      })
+    }
+  })
+})
+app.get('/getarticles',(req,res)=>{
+  let sql='SELECT id_articles,title,imagepath,email FROM Articles'
+  var con=mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "123456789",
+    database: "Redes"
+  })
+  con.connect(function(err){
+    if(err)
+    {
+      console.log(err)
+      res.send(err)
+      res.end
+    }
+    con.query(sql,function(err,result,fields){
+      if(err)
+      {
+        console.log(err)
+        res.send(err)
+        res.end
+      }
+      else{
+        console.log(result)
+        res.send(result)
+        res.end
+      }
+    })
+  })
+})
 app.post('/login',(req,res)=>{
     let sql='SELECT user,usuariofm FROM User WHERE (user =? OR email=?) AND password=? AND activo=?'
     let sql2='SELECT * FROM User WHERE user=? or email=?'
