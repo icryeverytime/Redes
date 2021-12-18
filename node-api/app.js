@@ -551,7 +551,7 @@ app.post('/registro',(req,res)=>{
             to: req.body.email,
             subject: 'Verify your email',
             text: 'I hope this message gets through!',
-            html: '<div style="text-align:center; width: 700px;margin-left: auto; margin-right: auto; border: 1px solid black;"><h2 style="background-color: #0096c7; color: white;">Music Site</h2><p>Hi '+req.body.fname+' '+req.body.lname+'! The last step to your registration <br>is activating your account by clicking the button below.</p><a href="http://25.83.103.75:5000/verify/'+req.body.email+'/'+rand+'"><button style="width: 200px; height: 40px; font-size: 20px; background-color: #0096c7; color: white; transition: 0.5s; margin-top: 10px;">Verify Email</button></a><br><p>If you did not request an email verification you can safely ignore this email.</p></div>', 
+            html: '<div style="text-align:center; width: 700px;margin-left: auto; margin-right: auto; border: 1px solid black;"><h2 style="background-color: #0096c7; color: white;">Music Site</h2><p>Hi '+req.body.fname+' '+req.body.lname+'! The last step to your registration <br>is activating your account by clicking the button below.</p><a href="http://25.92.32.84:5000/verify/'+req.body.email+'/'+rand+'"><button style="width: 200px; height: 40px; font-size: 20px; background-color: #0096c7; color: white; transition: 0.5s; margin-top: 10px;">Verify Email</button></a><br><p>If you did not request an email verification you can safely ignore this email.</p></div>', 
             auth: {
               type: 'OAuth2',
               user: 'internetcompany68@gmail.com',
