@@ -1,55 +1,93 @@
-<div id="background">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sign-up.component.css">
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div class="title"><span>Create your account</span></div>
+        <form [formGroup]="profileForm" #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value,userPost)" [@fade]="'in'">
+         <!--<label for="fname">First Name:</label>--> 
+          <div *ngIf="fname?.errors?.required && fname?.touched" class="alert form-group row">
+            <p style="font-size: 20px;">* First Name is required</p>
+          </div>
+          <div class="row">
+            <i class="fas fa-user"></i>
+            <input type="text" id="fname" placeholder="First Name" formControlName="fname" ngModel>
+        </div>
+        <!-- <label for="lname">Last Name:</label>--> 
+          <div *ngIf="lname?.errors?.required && lname?.touched" class="alert form-group row">
+              <p style="font-size: 20px;">* Last Name is required</p>
+          </div>
+          <div class="row">
+            <i class="fas fa-user"></i>
+            <input type="text" id="lname" placeholder="Last name" formControlName="lname" ngModel>
+        </div>
+          <!--<label for="user">User:</label>-->
+          <div *ngIf="user?.invalid && user?.touched" class="alert">
+              <div *ngIf="user?.errors?.required" class=" form-group row">
+                <p style="font-size: 20px;">* User is required</p>
+              </div>
+              <div *ngIf="user?.errors?.incorrect" class=" form-group row">
+                  <p style="font-size: 20px;"> * User already exists</p>
+              </div>
+          </div>
+          <div class="row">
+            <i class="fas fa-user"></i>
+            <input type="text" id="user" placeholder="User" formControlName="user" ngModel>
+        </div>
+         <!--<label for="email">Email:</label>--> 
+          <div *ngIf="email?.invalid && email?.touched" class="alert">
+              <div *ngIf="email?.errors?.required" class=" form-group row">
+                  <p style="font-size: 20px;"> * Email is required</p>
+              </div>
+              <div *ngIf="email?.errors?.email" class=" form-group row">
+                 <p style="font-size: 20px;"> * Enter a valid email</p>
+              </div>
+              <div *ngIf="email?.errors?.incorrect" class=" form-group row">
+                  <p style="font-size: 20px;">* Email already exists</p>
+              </div>
+          </div>
+          <div class="row">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" placeholder="Email" formControlName="email" ngModel>
+        </div>
+        <!--<label for="password">Password:</label>-->  
+          <div *ngIf="password?.invalid && password?.touched" class="alert">
+              <div *ngIf="password?.errors?.required" class=" form-group row">
+                <p style="font-size: 20px;">* Password is required</p>
+              </div>
+              <div *ngIf="password?.errors?.minlength" class=" form-group row">
+                <p style="font-size: 20px;">*  Password must be 8 characters long</p>
+              </div>
+          </div>
+          <div class="row">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" placeholder="Password" formControlName="password" ngModel>
+        </div>
+        <!--<label for="confirmar">Confirm Password:</label>-->  
+          <div *ngIf="spassword?.errors?.passwordcompare && spassword?.touched" class="alert form-group row">
+              <p style="font-size: 20px;">* Passwords don't matchup</p>
+          </div>
+          <div class="row">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="spassword" placeholder="Confirm Password" formControlName="spassword" ngModel>
+        </div>
 
-  <form [formGroup]="profileForm" #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value,userPost)" [@fade]="'in'">
-    <h3>Sign Up</h3>
-    <label for="fname">First Name:</label>
-    <div *ngIf="fname?.errors?.required && fname?.touched" class="alert">
-        <div>* First Name is required</div>
+          <br>
+          <div class="row button">
+            <input type="submit" value="Register" [disabled]="profileForm.invalid">
+        </div>
+      </form>  
+        
     </div>
-    <input type="text" id="fname" placeholder="First name" formControlName="fname" ngModel>
-    <label for="lname">Last Name:</label>
-    <div *ngIf="lname?.errors?.required && lname?.touched" class="alert">
-        <div>* Last Name is required</div>
-    </div>
-    <input type="text" id="lname" placeholder="Last name" formControlName="lname" ngModel>
-    <label for="user">User:</label>
-    <div *ngIf="user?.invalid && user?.touched" class="alert">
-        <div *ngIf="user?.errors?.required">
-            * User is required
-        </div>
-        <div *ngIf="user?.errors?.incorrect">
-            * User already exists
-        </div>
-    </div>
-    <input type="text" id="user" placeholder="User" formControlName="user" ngModel>
-    <label for="email">Email:</label>
-    <div *ngIf="email?.invalid && email?.touched" class="alert">
-        <div *ngIf="email?.errors?.required">
-            * Email is required
-        </div>
-        <div *ngIf="email?.errors?.email">
-            * Enter a valid email
-        </div>
-        <div *ngIf="email?.errors?.incorrect">
-            * Email already exists
-        </div>
-    </div>
-    <input type="email" id="email" placeholder="Email" formControlName="email" ngModel>
-    <label for="password">Password:</label>
-    <div *ngIf="password?.invalid && password?.touched" class="alert">
-        <div *ngIf="password?.errors?.required">
-            * Password is required
-        </div>
-        <div *ngIf="password?.errors?.minlength">
-            *  Password must be 8 characters long
-        </div>
-    </div>
-    <input type="password" id="password" placeholder="Password" formControlName="password" ngModel>
-    <label for="confirmar">Confirm Password:</label>
-    <div *ngIf="spassword?.errors?.passwordcompare && spassword?.touched" class="alert">
-        <div>* Passwords don't matchup</div>
-    </div>
-    <input type="password" id="spassword" placeholder="Confirm Password" formControlName="spassword" ngModel>
-    <br><input type="submit" value="Register" [disabled]="profileForm.invalid">
-</form>  
-</div>
+      </div>
+          
+</body>
+</html>
