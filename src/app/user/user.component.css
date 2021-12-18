@@ -1,8 +1,8 @@
 h3{
     text-align: center;
+    color: #f6f6f6;
 }
 #playlists{
-    border: 1px solid black;
     margin-left: 100px;
     margin-right: 100px;
     margin-top: 40px;
@@ -21,4 +21,8 @@ img{
 }
 p{
     color: #f6f6f6; font-family: 'Trebuchet MS', sans-serif; font-size: 16px; line-height: 24px;
+}
+body{
+    background: #212121;
+    padding-bottom: 1%;
 }
