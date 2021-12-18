@@ -15,3 +15,8 @@ h5:hover{
     text-decoration: underline;
     cursor: pointer;
 }
+body{
+    background: #212121;
+    font-family: 'Trebuchet MS', sans-serif;
+    color: white;
+}
