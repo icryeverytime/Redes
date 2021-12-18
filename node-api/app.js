@@ -3,9 +3,21 @@ const port=3000
 const express=require('express')
 const app=express()
 const cors=require('cors')
+const multer=require('multer')
 const https=require('https')
-const crypto = require("crypto");
 
+app.use(express.static('public'))
+app.use('/images',express.static('images'))
+const storage=multer.diskStorage({
+  destination: (req,file,callBack)=>{
+    callBack(null,'images')
+  },
+  filename: (req,file,callBack)=>{
+    var string=require("crypto").randomBytes(10).toString('hex')
+    callBack(null,`backend_${string}_${file.originalname}`)
+  }
+})
+var upload=multer({storage: storage})
 var mysql=require('mysql')
 var url=require('url')
 var request = require('request'); // "Request" library
@@ -16,6 +28,7 @@ var client_id='ad9782deb2b24f2892eb347a05140d01'
 var client_secret='42579b48778c4a80b71b66332960e2e0'
 var redirect_uri='http://25.83.103.75:5000/callback'
 var querystring = require('querystring');
+const e = require('express')
 var redirect_uri2='http://localhost/4200/user'
 
 var lfm = new LastfmAPI({
@@ -87,6 +100,250 @@ app.get('/:email/callback',function(req,res){
       }
     })
   })  
+})
+app.post('/articlepost',(req,res)=>{
+  console.log(req.body)
+  console.log(req.body["0"])
+  console.log(req.body["1"].data.insertId)
+  console.log(req.body["1"].data.email)
+  let sql=`UPDATE Articles SET ? WHERE id_articles = ?`
+  let post=({
+    title: req.body["0"].titulo,
+    content: req.body["0"].texto,
+    email: req.body["1"].data.email
+  })
+  var con=mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "123456789",
+    database: "Redes"
+  });
+  con.connect(function(err){
+    if(err)
+    {
+      console.log(err)
+      res.send(err)
+      res.end
+    }
+    else{
+      con.query(sql,[post,req.body["1"].data.insertId],function(err,result,fields){
+        if(err)
+        {
+          console.log(err)
+          res.send(err)
+          res.end
+        }
+        else{
+          console.log(result)
+          if(req.body["0"].pop==true)
+          {
+            let sql3='INSERT INTO Tags_post SET ?'
+            let post2=({
+              id_tags: 1,
+              id_articulo: req.body["1"].data.insertId
+            })
+            con.query(sql3,post2,function(err,result,fields){
+              if(err)
+              {
+                console.log(err)
+              }
+              else{
+                console.log(result)
+              }
+            })
+          }
+          if(req.body["0"].hiphop==true)
+          {
+            let sql3='INSERT INTO Tags_post SET ?'
+            let post2=({
+              id_tags: 4,
+              id_articulo: req.body["1"].data.insertId
+            })
+            con.query(sql3,post2,function(err,result,fields){
+              if(err)
+              {
+                console.log(err)
+              }
+              else{
+                console.log(result)
+              }
+            })
+          }
+          if(req.body["0"].rock==true)
+          {
+            let sql3='INSERT INTO Tags_post SET ?'
+            let post2=({
+              id_tags: 2,
+              id_articulo: req.body["1"].data.insertId
+            })
+            con.query(sql3,post2,function(err,result,fields){
+              if(err)
+              {
+                console.log(err)
+              }
+              else{
+                console.log(result)
+              }
+            })
+          }
+          if(req.body["0"].country==true)
+          {
+            let sql3='INSERT INTO Tags_post SET ?'
+            let post2=({
+              id_tags: 5,
+              id_articulo: req.body["1"].data.insertId
+            })
+            con.query(sql3,post2,function(err,result,fields){
+              if(err)
+              {
+                console.log(err)
+              }
+              else{
+                console.log(result)
+              }
+            })
+          }
+          if(req.body["0"].rb==true)
+          {
+            let sql3='INSERT INTO Tags_post SET ?'
+            let post2=({
+              id_tags: 3,
+              id_articulo: req.body["1"].data.insertId
+            })
+            con.query(sql3,post2,function(err,result,fields){
+              if(err)
+              {
+                console.log(err)
+              }
+              else{
+                console.log(result)
+              }
+            })
+          }
+          if(req.body["0"].classical==true)
+          {
+            let sql3='INSERT INTO Tags_post SET ?'
+            let post2=({
+              id_tags: 7,
+              id_articulo: req.body["1"].data.insertId
+            })
+            con.query(sql3,post2,function(err,result,fields){
+              if(err)
+              {
+                console.log(err)
+              }
+              else{
+                console.log(result)
+              }
+            })
+          }
+          if(req.body["0"].regional==true)
+          {
+            let sql3='INSERT INTO Tags_post SET ?'
+            let post2=({
+              id_tags: 8,
+              id_articulo: req.body["1"].data.insertId
+            })
+            con.query(sql3,post2,function(err,result,fields){
+              if(err)
+              {
+                console.log(err)
+              }
+              else{
+                console.log(result)
+              }
+            })
+          }
+          if(req.body["0"].jazz==true)
+          {
+            let sql3='INSERT INTO Tags_post SET ?'
+            let post2=({
+              id_tags: 9,
+              id_articulo: req.body["1"].data.insertId
+            })
+            con.query(sql3,post2,function(err,result,fields){
+              if(err)
+              {
+                console.log(err)
+              }
+              else{
+                console.log(result)
+              }
+            })
+          }
+          if(req.body["0"].edm==true)
+          {
+            let sql3='INSERT INTO Tags_post SET ?'
+            let post2=({
+              id_tags: 10,
+              id_articulo: req.body["1"].data.insertId
+            })
+            con.query(sql3,post2,function(err,result,fields){
+              if(err)
+              {
+                console.log(err)
+              }
+              else{
+                console.log(result)
+              }
+            })
+          }
+          if(req.body["0"].soul==true)
+          {
+            let sql3='INSERT INTO Tags_post SET ?'
+            let post2=({
+              id_tags: 6,
+              id_articulo: req.body["1"].data.insertId
+            })
+            con.query(sql3,post2,function(err,result,fields){
+              if(err)
+              {
+                console.log(err)
+              }
+              else{
+                console.log(result)
+              }
+            })
+          }
+          res.send("ingresado")
+          res.end
+        }
+      })
+    }
+  })
+  console.log(post)
+})
+app.post('/article',upload.single('file'),(req,res)=>{
+  console.log(req.file)
+  let sql='INSERT INTO Articles SET ?'
+  let post=({
+    imagepath: req.file.filename
+  })
+    var con=mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "123456789",
+      database: "Redes"
+    });
+    con.connect(function(err){
+      if(err)
+      {
+        console.log(err)
+      }
+      else{
+        con.query(sql,post,function(err,result,fields){
+          if(err)
+          {
+            console.log(err)
+          }
+          else{
+            console.log(result)
+            res.send(result)
+            res.end
+          }
+        })
+      }
+    })
 })
 app.get('/fm/:user',function(req,res){
   var data=req.params.user
