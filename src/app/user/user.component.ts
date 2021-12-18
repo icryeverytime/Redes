@@ -65,7 +65,7 @@ export class UserComponent implements OnInit {
     this.data8=[]
     this.User=this.route.snapshot.paramMap.get('user')
     
-    const url9='http://25.83.103.75:5000/fm/'+this.User
+    const url9='http://25.92.32.84:5000/fm/'+this.User
     this.http.get(url9).subscribe((res)=>{
       console.log(res)
       this.respuesta=res
@@ -145,7 +145,7 @@ export class UserComponent implements OnInit {
   }
   click()
   {
-    window.location.href = "http://www.last.fm/api/auth/?api_key=604024e30367d14d43eda34672a72cf2&cb=http://25.83.103.75:5000/"+this.User+"/callback";
+    window.location.href = "http://www.last.fm/api/auth/?api_key=604024e30367d14d43eda34672a72cf2&cb=http://25.92.32.84:5000/"+this.User+"/callback";
   }
   same()
   {
