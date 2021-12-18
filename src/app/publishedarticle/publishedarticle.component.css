@@ -16,7 +16,9 @@ h5:hover{
     cursor: pointer;
 }
 body{
+    padding-top: 6%;
     background: #212121;
     font-family: 'Trebuchet MS', sans-serif;
     color: white;
+    padding-bottom: 13%;
 }
