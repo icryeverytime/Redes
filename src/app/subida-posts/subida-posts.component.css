@@ -1,0 +1,16 @@
+body{
+    background: #212121;
+    overflow: hidden;
+    color: white;
+    margin: 0%;
+    font-family: 'Trebuchet MS', sans-serif;
+
+  }
+  html{
+      overflow: hidden;
+      
+  }
+.container{
+    padding-top: 4%;
+    padding-bottom: 20%;
+}
