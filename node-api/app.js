@@ -425,7 +425,7 @@ app.post('/getspecific',(req,res)=>{
     }
   })
 })
-app.get('/getarticles',(req,res)=>{
+app.post('/getarticles',(req,res)=>{
   let sql='SELECT id_articles,title,imagepath,email FROM Articles'
   var con=mysql.createConnection({
     host: "localhost",

@@ -169,4 +169,11 @@ export class UserComponent implements OnInit {
     }
     return false
   }
+  same4(){
+    if(this.Userfm==null && localStorage.getItem('user')==this.User)
+    {
+      return true
+    }
+    return false
+  }
 }
