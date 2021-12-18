@@ -15,11 +15,6 @@
     <div class="card-header bg-transparent border-light"><h4>Articles written by:</h4>
     </div>
     <div id="spotify">
-        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
-        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
-        <br *ngIf="!same2()"/>
-        <div class="card-footer bg-transparent border-light"><button class="btn btn-danger btn-lg" *ngIf="!same2()" (click)="click()">Connect</button>
-        </div>
     </div>
 </div>
 <div id="playlists" class="card text-white bg-dark mb-3 border-light mb-3">
@@ -27,9 +22,9 @@
     </div>
     <div id="spotify">
         <p *ngIf="same3()"> User has not connected their last.fm account :(</p>
-        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
-        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
-        <br *ngIf="!same2()"/>
+        <p *ngIf="same4()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="same4()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="same4()"/>
         <div id="border" *ngIf="same()">
             <p>Rank: {{data6["topalbums"]["album"]["0"]["@attr"]["rank"]}}</p>
             <p>Playcount: {{data6["topalbums"]["album"]["0"]["playcount"]}}</p>
@@ -101,7 +96,7 @@
             <img src={{album10}}>
         </div>
         <div class="card-footer">
-            <button class="btn btn-danger btn-lg" *ngIf="!same2()" (click)="click()">Connect</button>
+            <button class="btn btn-danger btn-lg" *ngIf="same4()" (click)="click()">Connect</button>
         </div>
     </div>
 </div>
@@ -112,9 +107,9 @@
     </div>
     <div id="spotify">
         <p *ngIf="same3()"> User has not connected his last.fm account :(</p>
-        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
-        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
-        <br *ngIf="!same2()"/>
+        <p *ngIf="same4()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="same4()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="same4()"/>
         <div id="border " *ngIf="same()">
             <p>Track: {{data7["recenttracks"]["track"]["0"]["name"]}}</p>
             <p>Album: {{data7["recenttracks"]["track"]["0"]["album"]["#text"]}}</p>
@@ -235,7 +230,7 @@
             <p>Artist: {{data7["recenttracks"]["track"]["19"]["artist"]["#text"]}}</p>
             <img src={{song20}}>
         </div>
-        <div class="card-footer"><button class="btn btn-danger btn-lg" *ngIf="!same2()" (click)="click()">Connect</button>
+        <div class="card-footer"><button class="btn btn-danger btn-lg" *ngIf="same4()" (click)="click()">Connect</button>
         </div>
     </div>
 </div>
@@ -245,9 +240,9 @@
     </div>
     <div id="spotify">
         <p *ngIf="same3()"> User has not connected his last.fm account :(</p>
-        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
-        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
-        <br *ngIf="!same2()"/>
+        <p *ngIf="same4()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="same4()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="same4()"/>
         <div id="border" *ngIf="same()">
             <p>Rank: {{data["weeklyalbumchart"]["album"]["0"]["@attr"]["rank"]}}</p>
             <p>Playcount: {{data["weeklyalbumchart"]["album"]["0"]["playcount"]}}</p>
@@ -279,7 +274,7 @@
             <p>Artist: {{data["weeklyalbumchart"]["album"]["4"]["artist"]["#text"]}}</p>
         </div>
         <div class="card-footer">
-            <button class="btn btn-danger btn-lg" *ngIf="!same2()" (click)="click()">Connect</button>
+            <button class="btn btn-danger btn-lg" *ngIf="same4()" (click)="click()">Connect</button>
         </div>
     </div>
 </div>
@@ -289,9 +284,9 @@
     </div>
     <div id="spotify">
         <p *ngIf="same3()"> User has not connected his last.fm account :(</p>
-        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
-        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
-        <br *ngIf="!same2()"/>
+        <p *ngIf="same4()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="same4()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="same4()"/>
         <div id="border" *ngIf="same()">
             <p>Rank: {{data2["weeklyartistchart"]["artist"]["0"]["@attr"]["rank"]}}</p>
             <p>Playcount: {{data2["weeklyartistchart"]["artist"]["0"]["playcount"]}}</p>
@@ -318,7 +313,7 @@
             <p>Artist: {{data2["weeklyartistchart"]["artist"]["4"]["name"]}}</p>
         </div>
         <div class="card-footer">
-            <button class="btn btn-danger btn-lg" *ngIf="!same2()" (click)="click()">Connect</button>
+            <button class="btn btn-danger btn-lg" *ngIf="same4()" (click)="click()">Connect</button>
         </div>
     </div>
 </div>
@@ -328,9 +323,9 @@
     </div>
     <div id="spotify">
         <p *ngIf="same3()"> User has not connected his last.fm account :(</p>
-        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
-        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
-        <br *ngIf="!same2()"/>
+        <p *ngIf="same4()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="same4()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="same4()"/>
         <div id="border" *ngIf="same()">
             <p>Rank: {{data3["weeklytrackchart"]["track"]["0"]["@attr"]["rank"]}}</p>
             <p>Playcount: {{data3["weeklytrackchart"]["track"]["0"]["playcount"]}}</p>
@@ -362,7 +357,7 @@
             <p>Song Name: {{data3["weeklytrackchart"]["track"]["4"]["name"]}}</p>
         </div>
         <div class="card-footer">
-            <button  class="btn btn-danger btn-lg" *ngIf="!same2()" (click)="click()">Connect</button>
+            <button  class="btn btn-danger btn-lg" *ngIf="same4()" (click)="click()">Connect</button>
         </div>
     </div>
 </div>
@@ -372,9 +367,9 @@
     </div>
     <div id="spotify">
         <p *ngIf="same3()"> User has not connected his last.fm account :(</p>
-        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
-        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
-        <br *ngIf="!same2()"/>
+        <p *ngIf="same4()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="same4()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="same4()"/>
         <div id="border" *ngIf="same()">
             <p>Rank: {{data4["toptracks"]["track"]["0"]["@attr"]["rank"]}}</p>
             <p>Playcount: {{data4["toptracks"]["track"]["0"]["playcount"]}}</p>
@@ -446,7 +441,7 @@
             
         </div>
         <div class="card-footer">
-            <button class="btn btn-danger btn-lg" *ngIf="!same2()" (click)="click()">Connect</button>        
+            <button class="btn btn-danger btn-lg" *ngIf="same4()" (click)="click()">Connect</button>        
         </div>
     </div>
 </div>
@@ -456,9 +451,9 @@
     </div>
     <div id="spotify">
         <p *ngIf="same3()"> User has not connected his last.fm account :(</p>
-        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
-        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
-        <br *ngIf="!same2()"/>
+        <p *ngIf="same4()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="same4()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="same4()"/>
         <div id="border" *ngIf="same()">
             <p>Rank: {{data5["topartists"]["artist"]["0"]["@attr"]["rank"]}}</p>
             <p>Playcount: {{data5["topartists"]["artist"]["0"]["playcount"]}}</p>
@@ -510,7 +505,7 @@
             <p>Artist: {{data5["topartists"]["artist"]["9"]["name"]}}</p>
         </div>
         <div class="card-footer">
-            <button class="btn btn-danger btn-lg" *ngIf="!same2()" (click)="click()">Connect</button>        
+            <button class="btn btn-danger btn-lg" *ngIf="same4()" (click)="click()">Connect</button>        
         </div>
     </div>
 </div>
@@ -520,9 +515,9 @@
     </div>
     <div id="spotify">
         <p *ngIf="same3()"> User has not connected his last.fm account :(</p>
-        <p *ngIf="!same2()">Connect your Last.fm to get more data!</p>
-        <img *ngIf="!same2()" src="assets/img/lastfm.png" width="100px">
-        <br *ngIf="!same2()"/>
+        <p *ngIf="same4()">Connect your Last.fm to get more data!</p>
+        <img *ngIf="same4()" src="assets/img/lastfm.png" width="100px">
+        <br *ngIf="same4()"/>
         <div id="border" *ngIf="same()">
             <p>Track: {{data8["lovedtracks"]["track"]["0"]["name"]}}</p>
             <p>Artist: {{data8["lovedtracks"]["track"]["0"]["artist"]["name"]}}</p>
@@ -564,7 +559,7 @@
             <p>Artist: {{data8["lovedtracks"]["track"]["9"]["artist"]["name"]}}</p>
         </div>
         <div class="card-footer">
-            <button class="btn btn-danger btn-lg" *ngIf="!same2()" (click)="click()">Connect</button>
+            <button class="btn btn-danger btn-lg" *ngIf="same4()" (click)="click()">Connect</button>
         </div>
     </div>
 </div>

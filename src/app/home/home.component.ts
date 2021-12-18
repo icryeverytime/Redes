@@ -27,9 +27,9 @@ export class HomeComponent implements OnInit {
 
   url='http://25.83.103.75:5000/getarticles'
   constructor(private http: HttpClient) { 
-    this.http.get(this.url).subscribe((res)=>{
-      console.log(res)
-      this.data=res
+    this.http.post(this.url,{responseType: 'json'}).subscribe((result)=>{
+      console.log(result)
+      this.data=result
       this.length=this.data["length"]
       this.newurl1="http://25.83.103.75:5000/images/"+this.data[this.length-3]["imagepath"]
       this.newurl2="http://25.83.103.75:5000/images/"+this.data[this.length-2]["imagepath"]
