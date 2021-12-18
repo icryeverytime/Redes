@@ -12,7 +12,10 @@
     <ul class="bg-dark">
       <li><a routerLink="/home" routerLinkActive="active" >Home</a></li>
       <li *ngIf="!readLocalStorageValue()" routerLink="/articles" routerLinkActive="active"><a>Publish</a></li>
+      <li style="float: right;"><button class="btn btn-danger btn-outline my-2 my-sm-0" type="submit">Search</button> </li>
+      <li style="float: right;"><input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></li>
       <li style="float: right;" *ngIf="readLocalStorageValue()" routerLink="/signup" routerLinkActive="active" ><a>Sign Up</a></li>
+      
       <li style="float: right;" *ngIf="readLocalStorageValue()" routerLink="/login" routerLinkActive="active"><a>Login</a></li>
       <li style="float: right;" *ngIf="!readLocalStorageValue()" class="logout"><a (click)="logout()">Logout</a></li>
       <li style="float: right;" *ngIf="!readLocalStorageValue()" routerLinkActive="active"><a (click)="viewUser()">{{User}}</a></li>
