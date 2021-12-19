@@ -18,7 +18,7 @@
         <div id="flex">
             <div id="item" *ngFor="let datos of articles;let i=index">
                 <p id="title" (click)='viewArticle(articles[i]["id_articles"])'>{{articles[i]["title"]}}</p>
-                <img [attr.src]='return(articles[i]["imagepath"])' width="200px" height="200px" (click)='viewArticle(articles[i]["id_articles"])'>
+                <img id="img" [attr.src]='return(articles[i]["imagepath"])' width="200px" height="200px" (click)='viewArticle(articles[i]["id_articles"])'>
                 <p id="writer" (click)='viewUser(articles[i]["email"])'>By: {{articles[i]["email"]}}</p>
             </div>
         </div>
