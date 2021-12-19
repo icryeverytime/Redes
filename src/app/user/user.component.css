@@ -20,7 +20,7 @@ img{
         border-radius: 50%;
 
 }
-img:hover{
+#img:hover{
     cursor: pointer;
     height: 250px;
     width: 250px;
