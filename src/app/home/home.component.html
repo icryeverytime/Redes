@@ -53,36 +53,44 @@
         <p id="writer" (click)='viewUser(this.data[this.random2]["email"])'>By: {{this.data[this.random3]["email"]}}</p>
     </div>
 </div>
+<h2>Articles Rated with 5 stars</h2>
+<div id="flex">
+    <div id="item" *ngFor="let datos of rated;let i=index">
+        <p id="title" (click)='viewArticle(rated[i]["id_articles"])'>{{rated[i]["title"]}}</p>
+        <img [attr.src]='return(rated[i]["imagepath"])' width="200px" height="200px" (click)='viewArticle(rated[i]["id_articles"])'>
+        <p id="writer" (click)='viewUser(rated[i]["email"])'>By: {{rated[i]["email"]}}</p>
+    </div>
+</div>
 <h2>Search by tags</h2>
 <div id="flex">
-    <div id="item2" class="gradient1">
+    <div id="item2" class="gradient1" (click)="getTags(1)">
         <p id="tag">Pop</p>
     </div>
-    <div id="item2" class="gradient2">
+    <div id="item2" class="gradient2" (click)="getTags(2)">
         <p id="tag">Rock</p>
     </div>
-    <div id="item2" class="gradient3">
+    <div id="item2" class="gradient3" (click)="getTags(3)">
         <p id="tag">R&B</p>
     </div>
-    <div id="item2" class="gradient4">
+    <div id="item2" class="gradient4" (click)="getTags(4)">
         <p id="tag">Hiphop & Rap</p>
     </div>
-    <div id="item2" class="gradient5">
+    <div id="item2" class="gradient5" (click)="getTags(5)">
         <p id="tag">Country</p>
     </div>
-    <div id="item2" class="gradient6">
+    <div id="item2" class="gradient6" (click)="getTags(6)">
         <p id="tag">Soul</p>
     </div>
-    <div id="item2" class="gradient7">
+    <div id="item2" class="gradient7" (click)="getTags(7)">
         <p id="tag">Classical</p>
     </div>
-    <div id="item2" class="gradient8">
+    <div id="item2" class="gradient8" (click)="getTags(8)">
         <p id="tag">Regional</p>
     </div>
-    <div id="item2" class="gradient9">
+    <div id="item2" class="gradient9" (click)="getTags(9)">
         <p id="tag">Jazz</p>
     </div>
-    <div id="item2" class="gradient10">
+    <div id="item2" class="gradient10" (click)="getTags(10)">
         <p id="tag">Edm</p>
     </div>
 </div>

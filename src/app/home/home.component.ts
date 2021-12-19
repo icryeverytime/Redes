@@ -26,6 +26,14 @@ export class HomeComponent implements OnInit {
   randomurl3:any
 
   url='http://25.83.103.75:5000/getarticles'
+  url2='http://25.83.103.75:5000/highlyrated'
+  rated:any
+  urlrated1:any
+  urlrated2:any
+  urlrated3:any
+  rated1:any
+  rated2:any
+  rated3:any
   constructor(private http: HttpClient) { 
     this.http.post(this.url,{responseType: 'json'}).subscribe((result)=>{
       console.log(result)
@@ -47,10 +55,18 @@ export class HomeComponent implements OnInit {
       this.randomurl1="http://25.83.103.75:5000/images/"+this.data[this.random1]["imagepath"]
       this.randomurl2="http://25.83.103.75:5000/images/"+this.data[this.random2]["imagepath"]
       this.randomurl3="http://25.83.103.75:5000/images/"+this.data[this.random3]["imagepath"]
+    })
+    this.http.get(this.url2,{responseType:'json'}).subscribe((result)=>{
+      console.log(result)
+      this.rated=result
     })  
   }
   ngOnInit(): void {
 
+  }
+  return(data:any)
+  {
+    return "http://25.83.103.75:5000/images/"+data
   }
   viewUser(data:any)
   {
@@ -59,5 +75,7 @@ export class HomeComponent implements OnInit {
   viewArticle(data:any){
     window.location.href = "http://localhost:4200/publishedarticles/"+data;    
   }
-
+  getTags(data:any){
+    window.location.href = "http://localhost:4200/tags/"+data; 
+  }
 }

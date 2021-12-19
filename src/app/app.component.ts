@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,6 +22,10 @@ export class AppComponent {
       return false
     }
   }
+  busquedaForm=new FormGroup({
+    search: new FormControl('')
+  })
+  get search(){return this.busquedaForm.get('search')}
   logout()
   {
     localStorage.removeItem('user')
@@ -31,4 +36,10 @@ export class AppComponent {
   {
     window.location.href = "http://localhost:4200/user/"+localStorage.getItem('user');
   }
+  onSubmit(data:any)
+  {
+    console.log(data)
+    window.location.href= "http://localhost:4200/search/"+data.search;
+  }
+  
 }

@@ -101,6 +101,34 @@ app.get('/:email/callback',function(req,res){
     })
   })  
 })
+app.post('/getarticletags',(req,res)=>{
+  console.log(req.body.data.articleid)
+  let sql='SELECT Tags_post.id_articulo,Tags_post.id_tags,Tags.nombre FROM Tags_post INNER JOIN Tags ON Tags.id_tags=Tags_post.id_tags WHERE Tags_post.id_articulo=?'
+  var con=mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "123456789",
+    database: "Redes"
+  })
+  con.connect(function(err){
+    if(err)
+    {
+      console.log(err)
+    }
+    else{
+      con.query(sql,req.body.data.articleid,function(err,result,fields){
+        if(err)
+        {
+          console.log(err)
+        }
+        else{
+          console.log(result)
+          res.send(result)
+        }
+      })
+    }
+  })
+})
 app.post('/articlepost',(req,res)=>{
   console.log(req.body)
   console.log(req.body["0"])
@@ -454,6 +482,271 @@ app.post('/getarticles',(req,res)=>{
         res.end
       }
     })
+  })
+})
+app.get('/highlyrated',(req,res)=>{
+  let sql='SELECT * FROM Articles INNER JOIN Article_Rating ON Articles.id_articles=Article_Rating.id_articles WHERE Article_Rating.calificacion=5;'
+  var con=mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "123456789",
+    database: "Redes"
+  })
+  con.connect(function(err){
+    if(err)
+    {
+      console.log(err)
+    }
+    else{
+      con.query(sql,function(err,result,fields){
+        if(err)
+        {
+          console.log(err)
+        }
+        else{
+          res.send(result)
+          let resultado=result
+          console.log(resultado)
+        }
+      })
+    }
+  })
+})
+app.post('/searchuser',(req,res)=>{
+  console.log(req.body) 
+  console.log(req.body.data.search)
+  let sql="SELECT user FROM User WHERE user like '%"+req.body.data.search+"%'"
+  var con=mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "123456789",
+    database: "Redes"
+  })
+  con.connect(function(err){
+    if(err)
+    {
+      console.log(err)
+    }
+    else{
+      con.query(sql,function(err,result,fields){
+        if(err)
+        {
+          console.log(err)
+        }
+        else{
+          console.log(result)
+          res.send(result)
+          res.end
+        }
+      })
+    }
+  })
+})
+app.post('/searcharticle',(req,res)=>{
+  console.log(req.body) 
+  console.log(req.body.data.search)
+  let sql="SELECT * FROM Articles WHERE title like '%"+req.body.data.search+"%'"
+  var con=mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "123456789",
+    database: "Redes"
+  })
+  con.connect(function(err){
+    if(err)
+    {
+      console.log(err)
+    }
+    else{
+      con.query(sql,function(err,result,fields){
+        if(err)
+        {
+          console.log(err)
+        }
+        else{
+          console.log(result)
+          res.send(result)
+          res.end
+        }
+      })
+    }
+  })
+})
+app.post('/gettags',(req,res)=>{
+  console.log(req.body.data.search)
+  let sql="SELECT DISTINCT Articles.title, Articles.imagepath,Articles.email,Articles.id_articles FROM Articles INNER JOIN Tags_post ON Tags_post.id_articulo=Articles.id_articles INNER JOIN Tags ON Tags_post.id_tags=?"
+  var con=mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "123456789",
+    database: "Redes"
+  })
+  con.connect(function(err){
+    if(err)
+    {
+      console.log(err)
+    }
+    else{
+      con.query(sql,req.body.data.search,function(err,result,fields){
+        if(err)
+        {
+          console.log(err)
+        }
+        else{
+          console.log(result)
+          res.send(result)
+        }
+      })
+    }
+  })
+})
+app.post('/searchcontent',(req,res)=>{
+  console.log(req.body) 
+  console.log(req.body.data.search)
+  let sql="SELECT * FROM Articles WHERE content like '%"+req.body.data.search+"%'"
+  var con=mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "123456789",
+    database: "Redes"
+  })
+  con.connect(function(err){
+    if(err)
+    {
+      console.log(err)
+    }
+    else{
+      con.query(sql,function(err,result,fields){
+        if(err)
+        {
+          console.log(err)
+        }
+        else{
+          console.log(result)
+          res.send(result)
+          res.end
+        }
+      })
+    }
+  })
+})
+app.post('/getuserrating',(req,res)=>{
+  console.log(req.body.data.articleid)
+  console.log(req.body.data.user)
+  let sql='SELECT calificacion FROM Article_Rating WHERE id_articles=? and user=?'
+  var con=mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "123456789",
+    database: "Redes"
+  })
+  con.connect(function(err){
+    if(err){
+      console.log(err)
+    }
+    else{
+      con.query(sql,[req.body.data.articleid,req.body.data.user],function(err,result,fields){
+        if(err)
+        {
+          console.log(err)
+        }
+        else{
+          console.log(result)
+          res.send(result)
+          res.end
+        }
+      })
+    }
+  })
+})
+app.post('/rating',(req,res)=>{
+  console.log(req.body)
+  console.log(req.body[0].data.articleid)
+  console.log(req.body[0].data.user)
+  console.log(req.body[1].calificacion)
+  let rate
+  if(req.body[1].calificacion=="uno")
+  {
+    rate=1
+  }
+  if(req.body[1].calificacion=="dos")
+  {
+    rate=2
+  }
+  if(req.body[1].calificacion=="tres")
+  {
+    rate=3
+  }
+  if(req.body[1].calificacion=="cuatro")
+  {
+    rate=4
+  }
+  if(req.body[1].calificacion=="cinco")
+  {
+    rate=5
+  }
+  let sql='INSERT INTO Article_Rating SET ?'
+  let post={
+    "id_articles": req.body[0].data.articleid,
+    "user": req.body[0].data.user,
+    "calificacion": rate
+  }
+  var con=mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "123456789",
+    database: "Redes"
+  })
+  con.connect(function(err){
+    if(err)
+    {
+      console.log(err)
+    }
+    else{
+      con.query(sql,post,function(err,result,fields){
+        if(err)
+        {
+          console.log(err)
+        }
+        else{
+          console.log(result)
+          res.send("ingresado")
+          res.end
+        }
+      })
+    }
+  })
+  
+})
+app.post('/getuserarticles',(req,res)=>{
+  console.log(req.body)
+  console.log(req.body.data.user)
+  let sql='SELECT * FROM Articles WHERE email=?'
+  var con=mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "123456789",
+    database: "Redes"
+  })
+  con.connect(function(err)
+  {
+    if(err)
+    {
+      console.log(err)
+    }
+    else{
+      con.query(sql,req.body.data.user,function(err,result,fieds){
+        if(err)
+        {
+          console.log(err)
+        }
+        else{
+          console.log(result)
+          res.send(result)
+          res.end
+        }
+      })
+    }
   })
 })
 app.post('/login',(req,res)=>{

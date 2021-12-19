@@ -1,0 +1,101 @@
+#item2:hover #tag{
+    color:linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+    font-weight: bolder;
+    transition: 0.5s;
+}
+#flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+#extra{
+    padding-bottom: 345px;
+    background-color: #212121;
+    color: white;
+}
+#title:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+#writer:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+#item{
+    border: 1px solid black;
+    text-align: center;
+    flex-basis: 30%;
+}
+#item2{
+    border: 1px solid black;
+    text-align: center;
+    flex-basis: 33.33%;
+}
+#item2:hover{
+    cursor:pointer;
+}
+#item:hover{
+    flex-basis: 40%;
+    transition: 1s ease-in-out;
+}
+img{
+    cursor: pointer;
+}
+.gradient1{
+    background-color: red; /* For browsers that do not support gradients */
+    background: linear-gradient(to right,#22b7fa,#1d28e2);
+}
+.gradient2{
+    background-color: red; /* For browsers that do not support gradients */
+    background: linear-gradient(to right,#ff9a9e,#fad0c4);
+}
+.gradient3{
+    background-color: red; /* For browsers that do not support gradients */
+    background: linear-gradient(to right,#a1c4fd,#c2e9fb);
+}
+.gradient4{
+    background-color: red; /* For browsers that do not support gradients */
+    background: linear-gradient(to right,#667eea,#764ba2);
+}
+.gradient5{
+    background-color: red; /* For browsers that do not support gradients */
+    background: linear-gradient(to right,#13547a,#80d0c7);
+}
+.gradient6{
+    background-color: red; /* For browsers that do not support gradients */
+    background: linear-gradient(to right,#ff758c,#ff7eb3);
+}
+.gradient7{
+    background-color: red; /* For browsers that do not support gradients */
+    background: linear-gradient(to right,#96deda,#50c9c3);
+}
+.gradient8{
+    background-color: red; /* For browsers that do not support gradients */
+    background: linear-gradient(to right,#ee9ca7,#ffdde1);
+}
+.gradient9{
+    background-color: red; /* For browsers that do not support gradients */
+    background: linear-gradient(to right,#1e3c72,#2a5298);
+}
+.gradient10{
+    background-color: red; /* For browsers that do not support gradients */
+    background: linear-gradient(to right,#B7F8DB,#50A7C2);
+}
+#item:hover img{
+    width: 300px;
+    height: 300px;
+    transition: 1.5s ease-in-out;
+}
+h2{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+#tag{
+    color: white;
+    font-size: 50px;
+}

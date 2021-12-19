@@ -3,14 +3,33 @@
         <h1>{{this.data[0].title}}</h1>
         <h5 (click)='viewUser(this.data[0]["email"])'>By: {{this.data[0].email}}</h5>
         <img [attr.src]="this.urlimg" height="400px" width="400px">
+        <div id="flex" *ngFor="let datos of tags; let i=index">
+            <span id="gradient" (click)='getTags(tags[i].id_tags)'>{{tags[i].nombre}}</span>
+        </div>
         <p>{{this.data[0].content}}</p>
-    </div>
-    <div id="calificacion" *ngIf="!logeado()">
-        Logeado
-    </div>
-    <div id="calificacion" *ngIf="logeado()">
-        No logeado
-    </div>    
+        <h2 *ngIf="logeado2()">Rate this article</h2>
+        <div id="calificacion" *ngIf="logeado2()">
+            <form [formGroup]="ratingForm" #ratingPost="ngForm" (ngSubmit)="onSubmit(ratingPost.value)">
+                <label for="uno">1</label>
+                <input id="uno" value="uno" type="radio" name="calificacion" formControlName="calificacion" ngModel>
+                <label for="dos">2</label>
+                <input id="dos" value="dos" type="radio" name="calificacion" formControlName="calificacion" ngModel>
+                <label for="tres">3</label>
+                <input id="tres" value="tres" type="radio" name="calificacion" formControlName="calificacion" ngModel>
+                <label for="cuatro">4</label>
+                <input id="cuatro" value="cuatro" type="radio" name="calificacion" formControlName="calificacion" ngModel>
+                <label for="cinco">5</label>
+                <input id="cinco" value="cinco" type="radio" name="calificacion" formControlName="calificacion" ngModel>
+                <input type="submit" value="rate"   >
+            </form>
+        </div>
+        <div id="calificacion" *ngIf="!logeado()">
+            Login to rate this article
+        </div> 
+        <div id="calfiicacion" *ngIf="!logeado2()">
+            Rating dado: {{this.rating[0].calificacion}}
+        </div>
+    </div>   
 </body>
 
 
