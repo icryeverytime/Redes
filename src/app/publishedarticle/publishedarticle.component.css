@@ -22,3 +22,22 @@ body{
     color: white;
     padding-bottom: 13%;
 }
+#flex{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+#gradient{
+    background-color: red; /* For browsers that do not support gradients */
+    background: linear-gradient(to right,#22b7fa,#1d28e2);
+    color: white;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80px;
+    text-align: center;
+}
+#graident:hover{
+    cursor: pointer;
+
+}

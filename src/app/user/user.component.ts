@@ -51,8 +51,9 @@ export class UserComponent implements OnInit {
   song19:any
   song20:any
 
+  articles:any
   respuesta:any
-
+  obj:any
   #text:any='#text'
   constructor(private route:ActivatedRoute,private http: HttpClient) { 
     this.data=[]
@@ -63,9 +64,17 @@ export class UserComponent implements OnInit {
     this.data6=[]
     this.data7=[]
     this.data8=[]
-    this.User=this.route.snapshot.paramMap.get('user')
+    this.User=this.route.snapshot.paramMap.get('user')  
     
     const url9='http://25.92.32.84:5000/fm/'+this.User
+    const url10='http://25.83.103.75:5000/getuserarticles'
+    this.obj={
+      "data":{"user":this.User}
+    }
+    this.http.post(url10,this.obj,{responseType: 'json'}).subscribe((resultado)=>{
+        this.articles=resultado
+        console.log(this.articles)
+    })
     this.http.get(url9).subscribe((res)=>{
       console.log(res)
       this.respuesta=res
@@ -142,6 +151,17 @@ export class UserComponent implements OnInit {
   }
   ngOnInit(): void {
 
+  }
+  return(data:any)
+  {
+    return "http://25.83.103.75:5000/images/"+data
+  }
+  viewUser(data:any)
+  {
+    window.location.href = "http://localhost:4200/user/"+data;
+  }
+  viewArticle(data:any){
+    window.location.href = "http://localhost:4200/publishedarticles/"+data;    
   }
   click()
   {

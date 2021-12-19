@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { SubidaPostsComponent } from './subida-posts/subida-posts.component';
 import { PublishedarticleComponent } from './publishedarticle/publishedarticle.component';
+import { SearchComponent } from './search/search.component';
+import { TagsComponent } from './tags/tags.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { PublishedarticleComponent } from './publishedarticle/publishedarticle.c
     LoginComponent,
     UserComponent,
     SubidaPostsComponent,
-    PublishedarticleComponent
+    PublishedarticleComponent,
+    SearchComponent,
+    TagsComponent
   ],
   imports: [
     BrowserModule,

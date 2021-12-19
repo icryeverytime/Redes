@@ -15,6 +15,13 @@
     <div class="card-header bg-transparent border-light"><h4>Articles written by:</h4>
     </div>
     <div id="spotify">
+        <div id="flex">
+            <div id="item" *ngFor="let datos of articles;let i=index">
+                <p id="title" (click)='viewArticle(articles[i]["id_articles"])'>{{articles[i]["title"]}}</p>
+                <img [attr.src]='return(articles[i]["imagepath"])' width="200px" height="200px" (click)='viewArticle(articles[i]["id_articles"])'>
+                <p id="writer" (click)='viewUser(articles[i]["email"])'>By: {{articles[i]["email"]}}</p>
+            </div>
+        </div>
     </div>
 </div>
 <div id="playlists" class="card text-white bg-dark mb-3 border-light mb-3">

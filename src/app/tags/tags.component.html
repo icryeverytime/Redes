@@ -1,0 +1,39 @@
+<div id="extra">
+<div id="item2" class="gradient1" *ngIf="this.tag==1">
+    <p id="tag">Pop</p>
+</div>
+<div id="item2" class="gradient2"  *ngIf="this.tag==2">
+    <p id="tag">Rock</p>
+</div>
+<div id="item2" class="gradient3"  *ngIf="this.tag==3">
+    <p id="tag">R&B</p>
+</div>
+<div id="item2" class="gradient4" *ngIf="this.tag==4">
+    <p id="tag">Hiphop & Rap</p>
+</div>
+<div id="item2" class="gradient5" *ngIf="this.tag==5">
+    <p id="tag">Country</p>
+</div>
+<div id="item2" class="gradient6" *ngIf="this.tag==6">
+    <p id="tag">Soul</p>
+</div>
+<div id="item2" class="gradient7" *ngIf="this.tag==7">
+    <p id="tag">Classical</p>
+</div>
+<div id="item2" class="gradient8" *ngIf="this.tag==8">
+    <p id="tag">Regional</p>
+</div>
+<div id="item2" class="gradient9"  *ngIf="this.tag==9">
+    <p id="tag">Jazz</p>
+</div>
+<div id="item2" class="gradient10" *ngIf="this.tag==10">
+    <p id="tag">Edm</p>
+</div>
+<div id="flex" *ngFor="let datos of data; let i=index">
+    <div id="item" >
+        <p id="title" (click)='viewArticle(data[i]["id_articles"])'>{{data[i]["title"]}}</p>
+        <img [attr.src]='return(data[i]["imagepath"])' width="200px" height="200px" (click)='viewArticle(data[i]["id_articles"])'>
+        <p id="writer" (click)='searchUser(data[i]["email"])'>By: {{data[i]["email"]}}</p>
+    </div>
+</div>
+</div>

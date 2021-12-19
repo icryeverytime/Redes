@@ -1,0 +1,22 @@
+<body>
+    <h2>Search Users</h2>
+<div id="result" *ngFor="let datos of result1; let i=index">
+    <p id="user" (click)="searchUser(result1[i].user)">{{result1[i].user}}</p>
+</div>
+<h2>Search Articles</h2>
+<div id="flex" *ngFor="let datos of result2; let i=index">
+    <div id="item" >
+        <p id="title" (click)='viewArticle(result2[i]["id_articles"])'>{{result2[i]["title"]}}</p>
+        <img [attr.src]='return(result2[i]["imagepath"])' width="200px" height="200px" (click)='viewArticle(result2[i]["id_articles"])'>
+        <p id="writer" (click)='searchUser(result2[i]["email"])'>By: {{result2[i]["email"]}}</p>
+    </div>
+</div>
+<h2 id="last">Search Contents</h2>
+<div id="flex" *ngFor="let datos of result3; let i=index">
+    <div id="item" >
+        <p id="title" (click)='viewArticle(result3[i]["id_articles"])'>{{result3[i]["title"]}}</p>
+        <img [attr.src]='return(result3[i]["imagepath"])' width="200px" height="200px" (click)='viewArticle(result3[i]["id_articles"])'>
+        <p id="writer" (click)='searchUser(result3[i]["email"])'>By: {{result3[i]["email"]}}</p>
+    </div>
+</div>
+</body>
