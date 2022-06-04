@@ -16,7 +16,7 @@
   <div class="field">
     <label class="titulo label has-text-white">Title of Article</label>
     <div class="control">
-      <input class="input" type="text" id="titulo" formControlName="titulo" ngModel>
+      <input class="input" type="text" id="titulo" formControlName="titulo" ngModel maxlength="90">
     </div>
   </div>
   <label for="tags" class="label has-text-white ">Article tags:</label>
@@ -66,12 +66,12 @@
   <div class="field">
     <label class="label has-text-white" for="text">Article Content:</label>
     <div class="control">
-      <textarea class="textarea" placeholder="Write your article here..." cols="80" rows="5" id="texto" name="texto" value="text" formControlName="texto" ngModel></textarea>
+      <textarea class="textarea" placeholder="Write your article here..." cols="80" rows="5" id="texto" name="texto" value="text" formControlName="texto" ngModel maxlength="1000"></textarea>
     </div>
   </div>
   <div class="field is-grouped">
     <div class="control">
-      <input type="file" (change)="onFileSelected($event)" id="imagen" formControlName="imagen" ngModel>
+      <input type="file" name="file" (change)="onFileSelected($event)" id="imagen" formControlName="imagen" ngModel>
       <p style="font-weight: bolder;">NOTE: PLEASE INSERT AN IMAGE WITH THE SAME DIMENSIONS.</p>
     </div>
     <div class="control">

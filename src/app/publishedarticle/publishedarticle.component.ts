@@ -21,10 +21,12 @@ export class PublishedarticleComponent implements OnInit {
   rating:any
   tags:any
   ratingForm=new FormGroup({
-    calificacion: new FormControl('')
+    calificacion: new FormControl(''),
+    mensaje: new FormControl('')
   })
   obj2:any={}
   get calificacion(){return this.ratingForm.get('calificacion')}
+  get mensaje(){return this.ratingForm.get('mensaje')}
   constructor(private route:ActivatedRoute,private http: HttpClient) { 
     this.article=this.route.snapshot.paramMap.get('id')
     console.log(this.article)
@@ -34,7 +36,11 @@ export class PublishedarticleComponent implements OnInit {
     this.http.post(this.url,this.obj,{responseType: 'json'}).subscribe((result)=>{
         console.log(result)
         this.data=result
-        this.urlimg="http://25.83.103.75:5000/images/"+this.data[0].imagepath
+        this.urlimg=this.data[0].imagepath
+        this.http.post(this.url4,this.obj,{responseType: 'json'}).subscribe((result)=>{
+          console.log(result)
+          this.tags=result
+        })
     })
     this.obj3={
       "data":{"articleid":this.article,"user":localStorage.getItem('user')}
@@ -43,10 +49,6 @@ export class PublishedarticleComponent implements OnInit {
         console.log(result)
       
       this.rating=result
-    })
-    this.http.post(this.url4,this.obj,{responseType: 'json'}).subscribe((result)=>{
-      console.log(result)
-      this.tags=result
     })
   }
   onSubmit(data:any){
@@ -79,12 +81,20 @@ export class PublishedarticleComponent implements OnInit {
       return true
     }
   }
-  
   getTags(data:any){
     window.location.href = "http://localhost:4200/tags/"+data; 
   }
   logeado2(){
-    if(localStorage.getItem('user')==null || this.rating!="")
+    if(localStorage.getItem('user')==null || this.rating!=""  )
+    {
+      return false
+    }
+    else{
+      return true
+    }
+  }
+  logeado3(){
+    if(localStorage.getItem('user')==null || this.rating!="" || localStorage.getItem('user')===this.data[0].email)
     {
       return false
     }

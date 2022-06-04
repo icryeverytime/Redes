@@ -1,4 +1,18 @@
 <body>
+    <div *ngIf="logeado()">
+        <h2>Recommended Articles</h2>
+        <div id="flex">
+            <div id="item" *ngFor="let datos of recommended;let i=index">
+                <p id="title" (click)='viewArticle(recommended[i]["id_articles"])'>{{recommended[i]["title"]}}</p>
+                <img id="img" [attr.src]='return(recommended[i]["imagepath"])' width="200px" height="200px" (click)='viewArticle(recommended[i]["id_articles"])'>
+                <p id="writer" (click)='viewUser(recommended[i]["email"])'>By: {{recommended[i]["email"]}}</p>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!logeado()">
+        <h2>Login and connect last.fm to get recommended articles</h2>
+
+    </div>
 <h2>Newest Articles</h2>
 <div id="flex">
     <div id="item" >

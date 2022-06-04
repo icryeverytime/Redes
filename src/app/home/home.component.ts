@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
   oldurl1:any
   oldurl2:any
   oldurl3:any
-
+  artists:any
+  albums:any
   newurl1:any
   newurl2:any
   newurl3:any
@@ -25,8 +26,16 @@ export class HomeComponent implements OnInit {
   randomurl2:any
   randomurl3:any
 
+  recomendado1:any
+  resultrecomendado:any
+  recommended:any=[]
+  recomendado2:any
+  obj:any={}
+
   url='http://25.83.103.75:5000/getarticles'
   url2='http://25.83.103.75:5000/highlyrated'
+  url3='http://25.83.103.75:5000/getartist'
+  url4='http://25.83.103.75:5000/getalbum'
   rated:any
   urlrated1:any
   urlrated2:any
@@ -39,12 +48,46 @@ export class HomeComponent implements OnInit {
       console.log(result)
       this.data=result
       this.length=this.data["length"]
-      this.newurl1="http://25.83.103.75:5000/images/"+this.data[this.length-3]["imagepath"]
-      this.newurl2="http://25.83.103.75:5000/images/"+this.data[this.length-2]["imagepath"]
-      this.newurl3="http://25.83.103.75:5000/images/"+this.data[this.length-1]["imagepath"]
-      this.oldurl1="http://25.83.103.75:5000/images/"+this.data[0]["imagepath"]
-      this.oldurl2="http://25.83.103.75:5000/images/"+this.data[1]["imagepath"]
-      this.oldurl3="http://25.83.103.75:5000/images/"+this.data[2]["imagepath"]
+      this.obj=
+      {
+        "data": {"search": localStorage.getItem('user')} 
+      } 
+      this.http.post(this.url3,this.obj,{responseType:'json'}).subscribe((result)=>{
+        this.artists=result
+        console.log(this.artists[0])
+        for(var i=0;i<this.length;i++)
+        {
+            console.log(this.data[i]["title"]); 
+            if(this.data[i]["title"].includes(this.artists[0]["artist1"]) || this.data[i]["title"].includes(this.artists[0]["artist2"]) || this.data[i]["title"].includes(this.artists[0]["artist3"]) || this.data[i]["title"].includes(this.artists[0]["artist4"]) || this.data[i]["title"].includes(this.artists[0]["artist5"]))
+            {
+              console.log("includes")
+              this.recommended.push(this.data[i])
+              console.log(this.recommended)
+            }
+        }
+      })
+      this.http.post(this.url4,this.obj,{responseType:'json'}).subscribe((result)=>{
+        this.albums=result
+        console.log(this.albums[0])
+        for(var i=0;i<this.length;i++)
+        {
+            console.log(this.data[i]["title"]); 
+            if(this.data[i]["title"].includes(this.albums[0]["album1"]) || this.data[i]["title"].includes(this.albums[0]["album2"]) || this.data[i]["title"].includes(this.albums[0]["album3"]) || this.data[i]["title"].includes(this.albums[0]["album4"]) || this.data[i]["title"].includes(this.albums[0]["album5"]))
+            {
+              console.log("includes")
+              this.recommended.push(this.data[i])
+              console.log(this.recommended)
+            }
+        }
+      })
+
+  
+      this.newurl1=this.data[this.length-3]["imagepath"]
+      this.newurl2=this.data[this.length-2]["imagepath"]
+      this.newurl3=this.data[this.length-1]["imagepath"]
+      this.oldurl1=this.data[0]["imagepath"]
+      this.oldurl2=this.data[1]["imagepath"]
+      this.oldurl3=this.data[2]["imagepath"]
       this.random1=Math.floor(Math.random()*((this.length-1)+1))
       do{
         this.random2=Math.floor(Math.random()*((this.length-1)+1))
@@ -52,21 +95,31 @@ export class HomeComponent implements OnInit {
       do{
         this.random3=Math.floor(Math.random()*((this.length-1)+1))
       }while(this.random3==this.random2 || this.random3==this.random1)
-      this.randomurl1="http://25.83.103.75:5000/images/"+this.data[this.random1]["imagepath"]
-      this.randomurl2="http://25.83.103.75:5000/images/"+this.data[this.random2]["imagepath"]
-      this.randomurl3="http://25.83.103.75:5000/images/"+this.data[this.random3]["imagepath"]
+      this.randomurl1=this.data[this.random1]["imagepath"]
+      this.randomurl2=this.data[this.random2]["imagepath"]
+      this.randomurl3=this.data[this.random3]["imagepath"]
     })
     this.http.get(this.url2,{responseType:'json'}).subscribe((result)=>{
       console.log(result)
       this.rated=result
     })  
+    
   }
   ngOnInit(): void {
 
   }
+  logeado(){
+    if(localStorage.getItem('user')==null)
+    {
+      return false
+    }
+    else{
+      return true
+    }
+  }
   return(data:any)
   {
-    return "http://25.83.103.75:5000/images/"+data
+    return data
   }
   viewUser(data:any)
   {

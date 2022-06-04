@@ -11,7 +11,8 @@ import { HttpClient } from '@angular/common/http';
 export class LoginComponent implements OnInit {
   
   respuesta:any
-  url='http://25.92.32.84:5000/login'
+  //url='http://25.92.32.84:5000/login'
+  url='http://25.83.103.75:5000/login'
   constructor(private router: Router,private http: HttpClient) { 
     
   }

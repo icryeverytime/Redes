@@ -11,7 +11,9 @@ export class TagsComponent implements OnInit {
   tag:any
   obj:any={}
   data:any
+  data2:any
   url='http://25.83.103.75:5000/gettags'
+  url2='http://25.83.103.75:5000/gettaginfo'
   constructor(private route:ActivatedRoute,private http: HttpClient) { 
     this.tag=this.route.snapshot.paramMap.get('tags')
     this.obj=
@@ -22,6 +24,10 @@ export class TagsComponent implements OnInit {
       this.data=result
       console.log("resultado")
       console.log(this.data)
+    })
+    this.http.post(this.url2,this.obj,{responseType: 'json'}).subscribe((result)=>{
+      this.data2=result
+      console.log(this.data2)
     })
   }
   ngOnInit(): void {
@@ -36,7 +42,7 @@ export class TagsComponent implements OnInit {
   }
   return(data:any)
   {
-    return "http://25.83.103.75:5000/images/"+data
+    return data
   }
 
 }

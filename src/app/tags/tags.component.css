@@ -99,3 +99,7 @@ h2{
     color: white;
     font-size: 50px;
 }
+#centrar{
+    text-align: center;
+    margin-top: 20px;
+}

@@ -20,7 +20,7 @@ export class AppComponent {
     }
     else{
       return false
-    }
+      }
   }
   busquedaForm=new FormGroup({
     search: new FormControl('')
@@ -30,7 +30,7 @@ export class AppComponent {
   {
     localStorage.removeItem('user')
     localStorage.removeItem('usuariofm')
-    window.location.href = "http://localhost:4200/user/"
+    window.location.href = "http://localhost:4200/home/"
   }
   viewUser()
   {

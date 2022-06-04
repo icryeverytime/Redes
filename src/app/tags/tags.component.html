@@ -29,6 +29,13 @@
 <div id="item2" class="gradient10" *ngIf="this.tag==10">
     <p id="tag">Edm</p>
 </div>
+<div id="centrar" *ngFor="let datos2 of data2; let i=index">
+    <img [attr.src]='return(data2[i]["imagepath"])' width="500px" height="500px">
+    <br>
+    <h3>Descripcion</h3>
+    <p>{{data2[i]["descripcion"]}}</p>
+</div>
+<h2>Artciles related to the tags:</h2>
 <div id="flex" *ngFor="let datos of data; let i=index">
     <div id="item" >
         <p id="title" (click)='viewArticle(data[i]["id_articles"])'>{{data[i]["title"]}}</p>

@@ -9,7 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SearchComponent implements OnInit {
 search:any
-url1='http://25.92.32.84:5000/searchuser'
+url1='http://25.83.103.75:5000/searchuser'
+//url1='http://25.92.32.84:5000/searchuser'
 url2='http://25.83.103.75:5000/searcharticle'
 url3='http://25.83.103.75:5000/searchcontent'
 result1:any
@@ -46,6 +47,6 @@ constructor(private route:ActivatedRoute,private http: HttpClient) {
   }
   return(data:any)
   {
-    return "http://25.83.103.75:5000/images/"+data
+    return data
   }
 }

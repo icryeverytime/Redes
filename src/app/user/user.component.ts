@@ -66,7 +66,7 @@ export class UserComponent implements OnInit {
     this.data8=[]
     this.User=this.route.snapshot.paramMap.get('user')  
     
-    const url9='http://25.92.32.84:5000/fm/'+this.User
+    const url9='http://25.83.103.75:5000/fm/'+this.User
     const url10='http://25.83.103.75:5000/getuserarticles'
     this.obj={
       "data":{"user":this.User}
@@ -154,7 +154,7 @@ export class UserComponent implements OnInit {
   }
   return(data:any)
   {
-    return "http://25.83.103.75:5000/images/"+data
+    return data
   }
   viewUser(data:any)
   {
